@@ -1,13 +1,58 @@
 .contact {
-  background: #f8fafc;
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0;
+  background: #f7f9fc;
+}
+
+/* --- Same aurora mesh as the rest of the page --- */
+
+.contact::before{
+    content:"";
+    position:absolute;
+    inset:-20%;
+    z-index:0;
+    background:
+        radial-gradient(38% 38% at 20% 25%, rgba(165,180,252,.55), transparent 70%),
+        radial-gradient(42% 42% at 82% 20%, rgba(147,232,216,.5), transparent 70%),
+        radial-gradient(36% 36% at 70% 80%, rgba(251,207,232,.45), transparent 70%),
+        radial-gradient(30% 30% at 15% 85%, rgba(147,197,253,.4), transparent 70%);
+    filter: blur(40px);
+    animation: auroraDrift 22s ease-in-out infinite alternate;
+}
+
+.contact::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    opacity:.35;
+    mix-blend-mode: overlay;
+    pointer-events:none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes auroraDrift {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(-2%, 3%) scale(1.06); }
+    100% { transform: translate(3%, -2%) scale(1.02); }
+}
+
+.contact > .container{
+    position: relative;
+    z-index: 2;
 }
 
 .contact-container {
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: 350px 1fr;
   gap: 50px;
   margin-top: 50px;
 }
+
+/* --- Info cards: glass, staggered pop-in, icon bounce --- */
 
 .contact-info {
   display: flex;
@@ -19,15 +64,34 @@
   display: flex;
   gap: 20px;
   align-items: center;
-  background: white;
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.8);
   padding: 20px;
   border-radius: 16px;
   box-shadow: var(--shadow);
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease;
+  animation: popIn .6s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+.contact-card:nth-child(1){ animation-delay: .1s; }
+.contact-card:nth-child(2){ animation-delay: .2s; }
+.contact-card:nth-child(3){ animation-delay: .3s; }
+
+.contact-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px -8px rgba(15,23,42,.16);
 }
 
 .contact-card svg {
   font-size: 2rem;
   color: var(--primary);
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+}
+
+.contact-card:hover svg{
+  transform: scale(1.15) rotate(-6deg);
 }
 
 .contact-card h3 {
@@ -48,7 +112,10 @@
 .contact-social a {
   width: 50px;
   height: 50px;
-  background: white;
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.8);
   color: var(--primary);
   border-radius: 50%;
   display: flex;
@@ -57,19 +124,31 @@
   box-shadow: var(--shadow);
   transition: .3s;
   font-size: 1.3rem;
+  animation: popIn .5s cubic-bezier(.34,1.56,.64,1) both;
 }
+
+.contact-social a:nth-child(1){ animation-delay: .4s; }
+.contact-social a:nth-child(2){ animation-delay: .48s; }
+.contact-social a:nth-child(3){ animation-delay: .56s; }
 
 .contact-social a:hover {
   background: var(--primary);
   color: white;
-  transform: translateY(-5px);
+  transform: translateY(-5px) rotate(-6deg);
 }
 
+/* --- Form: glass panel, glowing gradient border on focus --- */
+
 .contact-form {
-  background: white;
+  position: relative;
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.8);
   padding: 35px;
   border-radius: 18px;
   box-shadow: var(--shadow);
+  animation: popIn .6s cubic-bezier(.34,1.56,.64,1) .15s both;
 }
 
 .contact-form input,
@@ -77,16 +156,20 @@
   width: 100%;
   padding: 15px;
   margin-bottom: 20px;
+  background: rgba(255,255,255,.6);
   border: 1px solid var(--border);
   border-radius: 10px;
   outline: none;
   font-size: 1rem;
   font-family: inherit;
+  transition: border-color .3s ease, box-shadow .3s ease, transform .2s ease;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(37,99,235,.15);
+  transform: translateY(-2px);
 }
 
 .contact-form textarea {
@@ -95,6 +178,49 @@
 
 .contact-form button {
   width: 100%;
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+}
+
+.contact-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -6px rgba(37,99,235,.45);
+}
+
+/* small tap-feedback so submitting feels responsive */
+.contact-form button:active {
+  transform: translateY(0) scale(.98);
+}
+
+/* --- Keyframes --- */
+
+@keyframes popIn{
+    from{ opacity:0; transform: translateY(28px) scale(.94); }
+    to{ opacity:1; transform: translateY(0) scale(1); }
+}
+
+@supports (animation-timeline: view()) {
+    .contact-card,
+    .contact-form{
+        animation-timeline: view();
+        animation-range: entry 0% cover 35%;
+    }
+}
+
+@media(prefers-reduced-motion: reduce){
+    .contact::before,
+    .contact-card,
+    .contact-card svg,
+    .contact-social a,
+    .contact-form,
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button{
+        animation: none;
+        transition: none;
+    }
+    .contact-card:hover,
+    .contact-social a:hover,
+    .contact-form button:hover{ transform: none; }
 }
 
 @media(max-width:992px){

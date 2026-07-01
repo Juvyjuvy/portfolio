@@ -1,43 +1,141 @@
+/* Hero.css */
+
+/* Optional, for the terminal-style tag below:
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+*/
+
 .hero {
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+  overflow: hidden;
   padding-top: 80px;
+  background: #f7f9fc;
+}
+
+/* --- Aurora mesh, drifting slowly behind everything --- */
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  z-index: 0;
+  background:
+    radial-gradient(38% 38% at 20% 25%, rgba(165,180,252,.55), transparent 70%),
+    radial-gradient(42% 42% at 82% 20%, rgba(147,232,216,.5), transparent 70%),
+    radial-gradient(36% 36% at 70% 80%, rgba(251,207,232,.45), transparent 70%),
+    radial-gradient(30% 30% at 15% 85%, rgba(147,197,253,.4), transparent 70%);
+  filter: blur(40px);
+  animation: auroraDrift 22s ease-in-out infinite alternate;
+}
+
+@keyframes auroraDrift {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(-2%, 3%) scale(1.06); }
+  100% { transform: translate(3%, -2%) scale(1.02); }
+}
+
+/* --- Fine grain, keeps the gradient from looking flat/plastic --- */
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: .35;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before { animation: none; }
 }
 
 .hero-container {
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 60px;
   align-items: center;
 }
 
+/* --- Tag → frosted terminal chip --- */
+
 .hero-tag {
-  display: inline-block;
-  background: #dbeafe;
-  color: var(--primary);
-  padding: 8px 18px;
-  border-radius: 50px;
-  font-size: .9rem;
-  font-weight: 600;
-  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: .85rem;
+  font-weight: 500;
+  color: #0f172a;
+  background: rgba(255,255,255,.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.6);
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(15,23,42,.08);
 }
+
+.hero-tag::before {
+  content: "$";
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.hero-tag::after {
+  content: "";
+  width: 2px;
+  height: 1em;
+  background: var(--primary);
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+/* --- Headline, name gets a slow-shifting gradient --- */
 
 .hero-content h1 {
   font-size: 3.5rem;
   color: var(--secondary);
   line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 .hero-content h1 span {
-  color: var(--primary);
+  background: linear-gradient(100deg, var(--primary), #38bdf8, #a78bfa, var(--primary));
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-tag::after,
+  .hero-content h1 span { animation: none; }
 }
 
 .hero-content h3 {
   margin: 20px 0;
   color: var(--gray);
   font-size: 1.4rem;
+  font-weight: 600;
 }
 
 .hero-content p {
@@ -46,6 +144,8 @@
   line-height: 1.8;
   max-width: 550px;
 }
+
+/* --- Buttons, glassy outline + glow on the solid one --- */
 
 .hero-buttons {
   display: flex;
@@ -57,7 +157,23 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  box-shadow: 0 10px 30px -8px rgba(37,99,235,.5);
+  transition: transform .3s, box-shadow .3s;
 }
+
+.hero-buttons .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px -6px rgba(37,99,235,.6);
+}
+
+.hero-buttons .btn-outline {
+  background: rgba(255,255,255,.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px rgba(15,23,42,.06);
+}
+
+/* --- Socials, frosted pills --- */
 
 .hero-social {
   display: flex;
@@ -67,7 +183,10 @@
 .hero-social a {
   width: 50px;
   height: 50px;
-  background: white;
+  background: rgba(255,255,255,.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.7);
   color: var(--primary);
   border-radius: 50%;
   display: flex;
@@ -82,19 +201,79 @@
   background: var(--primary);
   color: white;
   transform: translateY(-6px);
+  box-shadow: 0 12px 24px -6px rgba(37,99,235,.5);
 }
 
+/* --- Image: glow halo + glass frame + floating badge (circular) --- */
+
 .hero-image {
+  position: relative;
   display: flex;
   justify-content: center;
 }
 
+.hero-image::before {
+  content: "";
+  position: absolute;
+  width: 440px;
+  max-width: 92%;
+  aspect-ratio: 1 / 1;
+  background: conic-gradient(from 0deg, var(--primary), #a78bfa, #38bdf8, var(--primary));
+  border-radius: 50%;
+  filter: blur(38px);
+  opacity: .35;
+  animation: haloPulse 6s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes haloPulse {
+  0%, 100% { opacity: .3; transform: scale(1); }
+  50% { opacity: .5; transform: scale(1.04); }
+}
+
 .hero-image img {
+  position: relative;
+  z-index: 1;
   width: 420px;
   max-width: 100%;
-  border-radius: 30px;
-  box-shadow: 0 20px 40px rgba(0,0,0,.15);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.7);
+  box-shadow: 0 25px 50px -12px rgba(15,23,42,.25);
+  transition: transform .4s ease;
 }
+
+.hero-image:hover img {
+  transform: translateY(-6px);
+}
+
+.hero-image::after {
+  content: "● Open to work";
+  position: absolute;
+  z-index: 2;
+  bottom: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.8);
+  color: var(--secondary);
+  font-size: .85rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 50px;
+  box-shadow: 0 10px 24px rgba(15,23,42,.12);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image::before { animation: none; }
+  .hero-image:hover img { transform: none; }
+}
+
+/* --- Responsive --- */
 
 @media(max-width:992px){
 
@@ -124,6 +303,11 @@
     font-size:2.7rem;
 }
 
+.hero-tag {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 }
 
 @media(max-width:768px){
@@ -142,6 +326,14 @@
 
 .hero-image img{
     width:300px;
+}
+
+.hero-image::before {
+    width: 300px;
+}
+
+.hero-tag {
+    font-size: .75rem;
 }
 
 }

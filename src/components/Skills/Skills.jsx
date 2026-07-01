@@ -4,6 +4,7 @@ function Skills() {
   const skills = [
     {
       title: "Frontend Development",
+      tagline: "Building interfaces people actually enjoy using.",
       items: [
         "React.js",
         "HTML5",
@@ -14,6 +15,7 @@ function Skills() {
     },
     {
       title: "Programming",
+      tagline: "Server-side logic and databases that hold up.",
       items: [
         "PHP",
         "Java",
@@ -22,12 +24,14 @@ function Skills() {
     },
     {
       title: "UI/UX Design",
+      tagline: "Designing with the user's flow in mind first.",
       items: [
         "Figma",
       ],
     },
     {
       title: "Tools",
+      tagline: "The everyday stack that keeps projects moving.",
       items: [
         "Git/GitHub",
         "Visual Studio Code",
@@ -36,6 +40,7 @@ function Skills() {
     },
     {
       title: "Other Skills",
+      tagline: "Practical, hands-on know-how beyond code.",
       items: [
         "Responsive Web Design",
         "Graphic Design",
@@ -59,15 +64,26 @@ function Skills() {
 
           {skills.map((skill, index) => (
             <div className="skill-card" key={index}>
+              <div className="card-inner">
 
-              <h3>{skill.title}</h3>
+                <div className="card-front">
+                  <h3>{skill.title}</h3>
+                  <ul>
+                    {skill.items.map((item, i) => (
+                      <li key={i}>✔ {item}</li>
+                    ))}
+                  </ul>
+                </div>
 
-              <ul>
-                {skill.items.map((item, i) => (
-                  <li key={i}>✔ {item}</li>
-                ))}
-              </ul>
+                <div className="card-back">
+                  <h3>{skill.title}</h3>
+                  <p>{skill.tagline}</p>
+                  <span className="card-count">
+                    {skill.items.length} skill{skill.items.length > 1 ? "s" : ""}
+                  </span>
+                </div>
 
+              </div>
             </div>
           ))}
 

@@ -1,33 +1,139 @@
 .certification{
-    background:#fff;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 0;
+    background: #f7f9fc;
+}
+
+/* --- Same aurora mesh as the rest of the page --- */
+
+.certification::before{
+    content:"";
+    position:absolute;
+    inset:-20%;
+    z-index:0;
+    background:
+        radial-gradient(38% 38% at 20% 25%, rgba(165,180,252,.55), transparent 70%),
+        radial-gradient(42% 42% at 82% 20%, rgba(147,232,216,.5), transparent 70%),
+        radial-gradient(36% 36% at 70% 80%, rgba(251,207,232,.45), transparent 70%),
+        radial-gradient(30% 30% at 15% 85%, rgba(147,197,253,.4), transparent 70%);
+    filter: blur(40px);
+    animation: auroraDrift 22s ease-in-out infinite alternate;
+}
+
+.certification::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    opacity:.35;
+    mix-blend-mode: overlay;
+    pointer-events:none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes auroraDrift {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(-2%, 3%) scale(1.06); }
+    100% { transform: translate(3%, -2%) scale(1.02); }
 }
 
 .certification-container{
+    position: relative;
+    z-index: 2;
     display:flex;
     justify-content:center;
     margin-top:50px;
 }
 
+/* --- Card: glass, gradient border glow, bold pop-in --- */
+
 .certificate-card{
+    position: relative;
     display:grid;
     grid-template-columns:320px 1fr;
     gap:35px;
-    background:white;
+    background: rgba(255,255,255,.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,.8);
     padding:30px;
     border-radius:20px;
     box-shadow:0 12px 30px rgba(0,0,0,.08);
     max-width:1000px;
-    transition:.35s;
+    transition: transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .4s ease;
+    animation: popIn .7s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+/* soft rotating glow halo behind the card, like the hero photo */
+.certificate-card::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    z-index:-1;
+    border-radius:22px;
+    background: conic-gradient(from 0deg, var(--primary), #a78bfa, #38bdf8, var(--primary));
+    opacity:.25;
+    filter: blur(20px);
+    animation: spin 12s linear infinite;
 }
 
 .certificate-card:hover{
     transform:translateY(-8px);
+    box-shadow:0 24px 46px -10px rgba(15,23,42,.2);
+}
+
+@keyframes popIn{
+    from{ opacity:0; transform: translateY(32px) scale(.94); }
+    to{ opacity:1; transform: translateY(0) scale(1); }
+}
+
+@keyframes spin{
+    from{ transform: rotate(0deg); }
+    to{ transform: rotate(360deg); }
+}
+
+@supports (animation-timeline: view()) {
+    .certificate-card{
+        animation-timeline: view();
+        animation-range: entry 0% cover 40%;
+    }
+}
+
+/* --- Image: shine sweep on hover, like light catching a plaque --- */
+
+.certificate-image{
+    position: relative;
+    overflow: hidden;
+    border-radius:12px;
 }
 
 .certificate-image img{
     width:100%;
+    display: block;
     border-radius:12px;
     box-shadow:0 10px 20px rgba(0,0,0,.1);
+    transition: transform .5s ease;
+}
+
+.certificate-card:hover .certificate-image img{
+    transform: scale(1.03);
+}
+
+.certificate-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.55) 50%, transparent 70%);
+    transform: translateX(-120%);
+}
+
+.certificate-card:hover .certificate-image::after{
+    animation: shine 1s ease forwards;
+}
+
+@keyframes shine{
+    to{ transform: translateX(120%); }
 }
 
 .certificate-content{
@@ -36,8 +142,12 @@
     justify-content:center;
 }
 
+/* --- Badge: shimmering gradient text, feels earned not just labeled --- */
+
 .certificate-badge{
-    display:inline-block;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
     width:max-content;
     padding:6px 15px;
     background:#eff6ff;
@@ -46,29 +156,106 @@
     font-size:.9rem;
     font-weight:600;
     margin-bottom:18px;
+    animation: badgePop .5s cubic-bezier(.34,1.56,.64,1) .3s both;
+}
+
+.certificate-badge::before{
+    content:"✓";
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    background: var(--primary);
+    color:#fff;
+    font-size:.7rem;
+}
+
+@keyframes badgePop{
+    from{ opacity:0; transform: scale(.6); }
+    to{ opacity:1; transform: scale(1); }
 }
 
 .certificate-content h3{
     color:var(--secondary);
     margin-bottom:10px;
     font-size:1.8rem;
+    animation: fadeUp .5s ease .4s both;
 }
 
 .certificate-content h4{
     color:var(--primary);
     margin-bottom:20px;
+    animation: fadeUp .5s ease .5s both;
 }
 
 .certificate-content p{
     color:var(--gray);
     margin-bottom:25px;
     line-height:1.8;
+    animation: fadeUp .5s ease .6s both;
+}
+
+@keyframes fadeUp{
+    from{ opacity:0; transform: translateY(16px); }
+    to{ opacity:1; transform: translateY(0); }
+}
+
+/* --- View Certificate button --- */
+
+.certificate-content .btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: max-content;
+    padding: 12px 26px;
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
+    box-shadow: 0 10px 24px -8px rgba(37,99,235,.5);
+    transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease, background .3s ease;
+    animation: fadeUp .5s ease .7s both;
+}
+
+.certificate-content .btn:hover{
+    background: #1d4ed8;
+    transform: translateY(-4px);
+    box-shadow: 0 16px 30px -8px rgba(37,99,235,.6);
+}
+
+.certificate-content .btn:active{
+    transform: translateY(-1px) scale(.98);
+}
+
+@media(prefers-reduced-motion: reduce){
+    .certification::before,
+    .certificate-card,
+    .certificate-card::before,
+    .certificate-image img,
+    .certificate-badge,
+    .certificate-content h3,
+    .certificate-content h4,
+    .certificate-content p,
+    .certificate-content .btn{
+        animation: none;
+    }
+    .certificate-card:hover{ transform: none; }
+    .certificate-card:hover .certificate-image img{ transform: none; }
+    .certificate-content .btn:hover{ transform: none; }
 }
 
 @media(max-width:992px){
 
 .certificate-card{
     grid-template-columns:1fr;
+}
+
+.certificate-content .btn{
+    margin-left: auto;
+    margin-right: auto;
 }
 
 }
@@ -81,6 +268,10 @@
 
 .certificate-card{
     padding:20px;
+}
+
+.certificate-content .btn{
+    width: 100%;
 }
 
 }

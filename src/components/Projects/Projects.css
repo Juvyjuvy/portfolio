@@ -1,31 +1,121 @@
 .projects{
-    background:#fff;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 0;
+    background: #f7f9fc;
+}
+
+/* --- Same aurora mesh as Hero/About/Skills --- */
+
+.projects::before{
+    content:"";
+    position:absolute;
+    inset:-20%;
+    z-index:0;
+    background:
+        radial-gradient(38% 38% at 20% 25%, rgba(165,180,252,.55), transparent 70%),
+        radial-gradient(42% 42% at 82% 20%, rgba(147,232,216,.5), transparent 70%),
+        radial-gradient(36% 36% at 70% 80%, rgba(251,207,232,.45), transparent 70%),
+        radial-gradient(30% 30% at 15% 85%, rgba(147,197,253,.4), transparent 70%);
+    filter: blur(40px);
+    animation: auroraDrift 22s ease-in-out infinite alternate;
+}
+
+.projects::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    opacity:.35;
+    mix-blend-mode: overlay;
+    pointer-events:none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes auroraDrift {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(-2%, 3%) scale(1.06); }
+    100% { transform: translate(3%, -2%) scale(1.02); }
+}
+
+.projects > .container{
+    position: relative;
+    z-index: 2;
 }
 
 .projects-grid{
+    position: relative;
+    z-index: 2;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
     gap:35px;
     margin-top:50px;
 }
 
+/* --- Cards: glass, bouncy pop-in, alternating tilt --- */
+
 .project-card{
-    background:#fff;
+    position: relative;
+    background: rgba(255,255,255,.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,.8);
     border-radius:18px;
     overflow:hidden;
     box-shadow:0 12px 30px rgba(0,0,0,.08);
-    transition:.35s;
+    transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease;
+    animation: popIn .6s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+.project-card:nth-child(1){ animation-delay: .05s; }
+.project-card:nth-child(2){ animation-delay: .15s; }
+.project-card:nth-child(3){ animation-delay: .25s; }
+.project-card:nth-child(4){ animation-delay: .35s; }
+.project-card:nth-child(5){ animation-delay: .45s; }
+.project-card:nth-child(6){ animation-delay: .55s; }
+
+.project-card:nth-child(odd):hover{
+    transform:translateY(-10px) rotate(-1deg);
+}
+
+.project-card:nth-child(even):hover{
+    transform:translateY(-10px) rotate(1deg);
 }
 
 .project-card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 20px 40px rgba(0,0,0,.15);
+    box-shadow:0 20px 40px rgba(0,0,0,.18);
+}
+
+/* --- Image: zoom + gradient wash on hover --- */
+
+.project-card .project-image{
+    position: relative;
+    overflow: hidden;
 }
 
 .project-card img{
     width:100%;
     height:230px;
     object-fit:cover;
+    display:block;
+    transition: transform .5s ease;
+}
+
+.project-card:hover img{
+    transform: scale(1.08);
+}
+
+.project-card .project-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(180deg, transparent 50%, rgba(15,23,42,.35) 100%);
+    opacity:0;
+    transition: opacity .35s ease;
+}
+
+.project-card:hover .project-image::after{
+    opacity:1;
 }
 
 .project-content{
@@ -41,7 +131,10 @@
 .project-content p{
     color:var(--gray);
     margin-bottom:20px;
+    line-height: 1.7;
 }
+
+/* --- Tech stack: playful staggered pop, wiggle on hover --- */
 
 .tech-stack{
     display:flex;
@@ -51,13 +144,31 @@
 }
 
 .tech-stack span{
+    display: inline-block;
     background:#eff6ff;
     color:var(--primary);
     padding:8px 14px;
     border-radius:50px;
     font-size:.85rem;
     font-weight:600;
+    transition: transform .25s cubic-bezier(.34,1.56,.64,1), background .25s, color .25s;
+    animation: tagPop .4s cubic-bezier(.34,1.56,.64,1) both;
 }
+
+.tech-stack span:nth-child(1){ animation-delay: .1s; }
+.tech-stack span:nth-child(2){ animation-delay: .16s; }
+.tech-stack span:nth-child(3){ animation-delay: .22s; }
+.tech-stack span:nth-child(4){ animation-delay: .28s; }
+.tech-stack span:nth-child(5){ animation-delay: .34s; }
+.tech-stack span:nth-child(6){ animation-delay: .4s; }
+
+.tech-stack span:hover{
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-3px) rotate(-2deg) scale(1.06);
+}
+
+/* --- Buttons --- */
 
 .project-buttons{
     display:flex;
@@ -67,6 +178,44 @@
 .project-buttons .btn{
     flex:1;
     text-align:center;
+    transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+}
+
+.project-buttons .btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px -6px rgba(37,99,235,.4);
+}
+
+/* --- Keyframes --- */
+
+@keyframes popIn{
+    from{ opacity:0; transform: translateY(28px) scale(.92); }
+    to{ opacity:1; transform: translateY(0) scale(1); }
+}
+
+@keyframes tagPop{
+    from{ opacity:0; transform: scale(.5); }
+    to{ opacity:1; transform: scale(1); }
+}
+
+@supports (animation-timeline: view()) {
+    .project-card{
+        animation-timeline: view();
+        animation-range: entry 0% cover 30%;
+    }
+}
+
+@media(prefers-reduced-motion: reduce){
+    .projects::before,
+    .project-card,
+    .project-card img,
+    .tech-stack span{
+        animation: none;
+        transition: none;
+    }
+    .project-card:hover{ transform: none; }
+    .project-card:hover img{ transform: none; }
+    .tech-stack span:hover{ transform: none; }
 }
 
 @media(max-width:768px){

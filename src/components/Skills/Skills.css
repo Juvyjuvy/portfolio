@@ -1,55 +1,245 @@
+/* Skills.css */
+
 .skills{
-    background:#f8fafc;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 0;
+    background: #f7f9fc;
+}
+
+/* --- Same aurora mesh as Hero/About --- */
+
+.skills::before{
+    content:"";
+    position:absolute;
+    inset:-20%;
+    z-index:0;
+    background:
+        radial-gradient(38% 38% at 20% 25%, rgba(165,180,252,.55), transparent 70%),
+        radial-gradient(42% 42% at 82% 20%, rgba(147,232,216,.5), transparent 70%),
+        radial-gradient(36% 36% at 70% 80%, rgba(251,207,232,.45), transparent 70%),
+        radial-gradient(30% 30% at 15% 85%, rgba(147,197,253,.4), transparent 70%);
+    filter: blur(40px);
+    animation: auroraDrift 22s ease-in-out infinite alternate;
+}
+
+.skills::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    opacity:.35;
+    mix-blend-mode: overlay;
+    pointer-events:none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes auroraDrift {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(-2%, 3%) scale(1.06); }
+    100% { transform: translate(3%, -2%) scale(1.02); }
+}
+
+.skills > .container{
+    position: relative;
+    z-index: 2;
 }
 
 .skills-grid{
+    position: relative;
+    z-index: 2;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:30px;
     margin-top:50px;
 }
 
+/* --- Outer card: sets up 3D stage + entrance animation --- */
+
 .skill-card{
-    background:#fff;
-    padding:30px;
-    border-radius:16px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-    transition:.35s ease;
-    border-top:5px solid var(--primary);
+    position: relative;
+    perspective: 1500px;
+    height: 280px;
+    animation: popIn .6s cubic-bezier(.34,1.56,.64,1) both;
 }
 
-.skill-card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 20px 40px rgba(0,0,0,.12);
+.skill-card:nth-child(1){ animation-delay: .05s; }
+.skill-card:nth-child(2){ animation-delay: .15s; }
+.skill-card:nth-child(3){ animation-delay: .25s; }
+.skill-card:nth-child(4){ animation-delay: .35s; }
+.skill-card:nth-child(5){ animation-delay: .45s; }
+.skill-card:nth-child(6){ animation-delay: .55s; }
+.skill-card:nth-child(7){ animation-delay: .65s; }
+.skill-card:nth-child(8){ animation-delay: .75s; }
+
+@keyframes popIn{
+    from{ opacity:0; transform: translateY(28px) scale(.92); }
+    to{ opacity:1; transform: translateY(0) scale(1); }
 }
 
-.skill-card h3{
+@supports (animation-timeline: view()) {
+    .skill-card{
+        animation-timeline: view();
+        animation-range: entry 0% cover 30%;
+    }
+}
+
+/* --- The actual book cover: hinges open from the left edge --- */
+
+.card-inner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform-origin: left center;
+    transition: transform .7s cubic-bezier(.45,.05,.15,1);
+}
+
+.skill-card:hover .card-inner{
+    transform: rotateY(-165deg);
+}
+
+/* --- Front & back faces --- */
+
+.card-front,
+.card-back{
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    background: rgba(255,255,255,.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,.8);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    padding: 30px;
+    overflow: hidden;
+}
+
+.card-front::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:5px;
+    background: linear-gradient(90deg, var(--primary), #38bdf8, #a78bfa, var(--primary));
+    background-size: 300% auto;
+    animation: gradientShift 6s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.card-front h3,
+.card-back h3{
     color:var(--secondary);
     margin-bottom:20px;
     font-size:1.3rem;
 }
 
-.skill-card ul{
+.card-front ul{
     display:flex;
     flex-direction:column;
     gap:12px;
 }
 
-.skill-card li{
+.card-front li{
+    position: relative;
     color:var(--gray);
     font-size:.97rem;
-    transition:.3s;
+    padding-left: 18px;
+    transition: color .3s, transform .3s;
 }
 
-.skill-card li:hover{
-    color:var(--primary);
-    transform:translateX(6px);
+.card-front li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:50%;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background: var(--primary);
+    transform: translateY(-50%);
+}
+
+/* --- Back face: mirrored so text reads correctly once flipped --- */
+
+.card-back{
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, var(--primary), #38bdf8);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-back h3{
+    color: white;
+}
+
+.card-back p{
+    line-height: 1.7;
+    opacity: .95;
+    margin-bottom: 18px;
+}
+
+.card-count{
+    display: inline-block;
+    width: max-content;
+    padding: 6px 14px;
+    background: rgba(255,255,255,.2);
+    border-radius: 20px;
+    font-size: .85rem;
+    font-weight: 600;
+}
+
+/* --- Book "spine" shadow that darkens as it opens, sold the hinge --- */
+
+.card-front::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(90deg, rgba(0,0,0,.25), transparent 30%);
+    opacity: 0;
+    transition: opacity .7s ease;
+    pointer-events: none;
+}
+
+.skill-card:hover .card-front::after{
+    opacity: 1;
+}
+
+@media(prefers-reduced-motion: reduce){
+    .skills::before,
+    .skill-card,
+    .card-front::before{
+        animation: none;
+    }
+    .card-inner{
+        transition: none;
+    }
+    .skill-card:hover .card-inner{
+        transform: none;
+    }
 }
 
 @media(max-width:768px){
 
 .skills-grid{
     grid-template-columns:1fr;
+}
+
+.skill-card{
+    height: 300px;
+}
+
+/* hover doesn't really work on touch — flip on tap instead via :active/:focus */
+.skill-card:active .card-inner,
+.skill-card:focus-within .card-inner{
+    transform: rotateY(-165deg);
 }
 
 }
