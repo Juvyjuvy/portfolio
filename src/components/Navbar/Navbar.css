@@ -1,0 +1,153 @@
+/* ===========================
+   NAVBAR
+=========================== */
+
+.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    z-index: 999;
+}
+
+.nav-container {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ===========================
+   LOGO
+=========================== */
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--secondary);
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+/* ===========================
+   NAV MENU
+=========================== */
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-menu a {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    transition: 0.3s ease;
+    position: relative;
+}
+
+/* Hover Effect */
+
+.nav-menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: var(--primary);
+    transition: .3s;
+}
+
+.nav-menu a:hover {
+    color: var(--primary);
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+/* ===========================
+   RESUME BUTTON
+=========================== */
+
+.resume-btn {
+    padding: 10px 22px;
+    background: var(--primary);
+    color: white !important;
+    border-radius: 8px;
+    transition: .3s;
+}
+
+.resume-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-3px);
+}
+
+.resume-btn::after {
+    display: none;
+}
+
+/* ===========================
+   MENU ICON
+=========================== */
+
+.menu-icon {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--secondary);
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media screen and (max-width: 992px) {
+
+    .menu-icon {
+        display: block;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        padding: 40px 0;
+        box-shadow: 0 10px 25px rgba(0,0,0,.08);
+        transition: .4s ease;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .resume-btn {
+        width: 200px;
+        text-align: center;
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .menu-icon {
+        font-size: 1.6rem;
+    }
+
+}

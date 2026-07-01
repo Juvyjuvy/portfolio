@@ -1,0 +1,214 @@
+/* Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* ===========================
+   CSS VARIABLES
+=========================== */
+
+:root {
+  --primary: #2563eb;
+  --secondary: #1e293b;
+  --accent: #38bdf8;
+  --background: #f8fafc;
+  --white: #ffffff;
+  --text: #334155;
+  --gray: #64748b;
+  --border: #e2e8f0;
+
+  --shadow: 0 10px 30px rgba(0,0,0,.08);
+  --radius: 12px;
+  --transition: all .3s ease;
+}
+
+/* ===========================
+   RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Poppins",sans-serif;
+    background:var(--background);
+    color:var(--text);
+    line-height:1.7;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+ul{
+    list-style:none;
+}
+
+button{
+    border:none;
+    outline:none;
+    cursor:pointer;
+    font-family:inherit;
+}
+
+/* ===========================
+   CONTAINER
+=========================== */
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* ===========================
+   SECTION
+=========================== */
+
+section{
+    padding:100px 0;
+}
+
+.section-title{
+    font-size:2.5rem;
+    font-weight:700;
+    text-align:center;
+    color:var(--secondary);
+    margin-bottom:15px;
+}
+
+.section-subtitle{
+    text-align:center;
+    color:var(--gray);
+    margin-bottom:60px;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    border-radius:8px;
+    background:var(--primary);
+    color:#fff;
+    transition:var(--transition);
+    font-weight:600;
+}
+
+.btn:hover{
+    background:#1d4ed8;
+    transform:translateY(-3px);
+}
+
+.btn-outline{
+    background:none;
+    border:2px solid var(--primary);
+    color:var(--primary);
+}
+
+.btn-outline:hover{
+    background:var(--primary);
+    color:white;
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.card{
+    background:white;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    transition:var(--transition);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+/* ===========================
+   SCROLLBAR
+=========================== */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#edf2f7;
+}
+
+::-webkit-scrollbar-thumb{
+    background:var(--primary);
+    border-radius:50px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#1d4ed8;
+}
+
+/* ===========================
+   SELECTION
+=========================== */
+
+::selection{
+    background:var(--primary);
+    color:white;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+.section-title{
+    font-size:2rem;
+}
+
+section{
+    padding:80px 0;
+}
+
+}
+
+@media(max-width:768px){
+
+.container{
+    width:95%;
+}
+
+.section-title{
+    font-size:1.8rem;
+}
+
+.section-subtitle{
+    font-size:.95rem;
+}
+
+.btn{
+    padding:12px 24px;
+}
+
+}
+
+@media(max-width:480px){
+
+.section-title{
+    font-size:1.5rem;
+}
+
+}
