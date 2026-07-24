@@ -4,49 +4,69 @@ import promissory from "../../assets/images/Projects/promissory-system.png";
 import firealarm from "../../assets/images/Projects/fire-alarm.png";
 import grocery from "../../assets/images/Projects/grocery-app.png";
 
+import figmaUI from "../../assets/images/Projects/figma-ui.png";
+import graphicDesign from "../../assets/images/Projects/graphic-design.png";
+
 function Projects() {
   const projects = [
     {
+      category: "💻 Web Development",
+      categoryClass: "web",
       image: promissory,
       title: "Data-Driven Promissory Note Management System",
       description:
         "A web-based system that digitalizes the submission, approval, notification, and analytics of promissory notes. Developed as our capstone project.",
-      tech: [
-        "React.js",
-        "Firebase",
-        "JavaScript",
-        "Bootstrap",
-        "Figma",
-      ],
-      github: "https://github.com/Juvyjuvy/promissory-note",
-      demo: "#",
+      tech: ["React.js", "Firebase", "JavaScript", "Bootstrap", "Figma"],
+      type: "github",
+      link: "https://github.com/Juvyjuvy/promissory-note",
     },
+
     {
+      category: "💻 Web Development",
+      categoryClass: "web",
       image: firealarm,
       title: "Smart Fire Alarm",
       description:
-        "A fire safety monitoring system with real-time notifications and sensor-based detection designed to improve emergency response.",
-      tech: [
-        "React.js",
-        "Firebase",
-        "JavaScript",
-      ],
-      github: "https://github.com/Juvyjuvy/SMARTFIREALARM",
-      demo: "#",
+        "A smart fire alarm system with real-time notifications and sensor-based fire detection.",
+      tech: ["React.js", "Firebase", "JavaScript"],
+      type: "github",
+      link: "https://github.com/Juvyjuvy/SMARTFIREALARM",
     },
+
     {
+      category: "💻 Web Development",
+      categoryClass: "web",
       image: grocery,
       title: "Grocery List Application",
       description:
-        "A responsive grocery list application that allows users to manage shopping lists, organize products, and improve shopping efficiency.",
-      tech: [
-        "React.js",
-        "HTML",
-        "CSS",
-        "JavaScript",
-      ],
-      github: "https://github.com/Juvyjuvy/grocery-app",
-      demo: "#",
+        "A responsive grocery list application that allows users to organize and manage shopping lists efficiently.",
+      tech: ["React.js", "HTML", "CSS", "JavaScript"],
+      type: "github",
+      link: "https://github.com/Juvyjuvy/grocery-app",
+    },
+
+    {
+      category: "🎨 UI / UX Design",
+      categoryClass: "ui",
+      image: figmaUI,
+      title: "Mobile & Web UI Designs",
+      description:
+        "Designed modern and responsive user interfaces in Figma including dashboards, mobile applications, and landing pages.",
+      tech: ["Figma", "Prototype", "Auto Layout", "Wireframe"],
+      type: "figma",
+      link: "https://www.figma.com/design/riXaxhpi8hKTAPjzlo7Kyh/Project2?node-id=148-129&t=2XGZSOGqR6s5WfpV-0",
+    },
+
+    {
+      category: "🖌 Graphic Design",
+      categoryClass: "graphic",
+      image: graphicDesign,
+      title: "Graphic Design Collection",
+      description:
+        "Designed logos, social media posters, banners, tarpaulins, product advertisements, and other branding materials.",
+      tech: ["Photoshop", "Illustrator", "Canva", "Branding"],
+      type: "pdf",
+      link: "/files/Graphic-Design-Portfolio.pdf",
     },
   ];
 
@@ -57,7 +77,8 @@ function Projects() {
         <h2 className="section-title">Projects</h2>
 
         <p className="section-subtitle">
-          Some of my academic and personal projects.
+          A collection of my Web Development, UI/UX Design, and Graphic Design
+          projects.
         </p>
 
         <div className="projects-grid">
@@ -65,44 +86,63 @@ function Projects() {
           {projects.map((project, index) => (
             <div className="project-card" key={index}>
 
-              <img
-                src={project.image}
-                alt={project.title}
-              />
+              <div className="project-image">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                />
+              </div>
 
               <div className="project-content">
+
+                <span className={`project-category ${project.categoryClass}`}>
+                  {project.category}
+                </span>
 
                 <h3>{project.title}</h3>
 
                 <p>{project.description}</p>
 
                 <div className="tech-stack">
-
                   {project.tech.map((tech, i) => (
                     <span key={i}>{tech}</span>
                   ))}
-
                 </div>
 
                 <div className="project-buttons">
 
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn"
-                  >
-                    GitHub
-                  </a>
+                  {project.type === "github" && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn"
+                    >
+                      GitHub
+                    </a>
+                  )}
 
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn btn-outline"
-                  >
-                    Live Demo
-                  </a>
+                  {project.type === "figma" && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn"
+                    >
+                      View Figma
+                    </a>
+                  )}
+
+                  {project.type === "pdf" && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn"
+                    >
+                      View Designs
+                    </a>
+                  )}
 
                 </div>
 

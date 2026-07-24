@@ -5,7 +5,9 @@
     background: #f7f9fc;
 }
 
-/* --- Same aurora mesh as Hero/About/Skills --- */
+/* =========================
+   Aurora Background
+========================= */
 
 .projects::before{
     content:"";
@@ -27,52 +29,62 @@
     inset:0;
     z-index:1;
     opacity:.35;
-    mix-blend-mode: overlay;
+    mix-blend-mode:overlay;
     pointer-events:none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-@keyframes auroraDrift {
-    0%   { transform: translate(0, 0) scale(1); }
-    50%  { transform: translate(-2%, 3%) scale(1.06); }
-    100% { transform: translate(3%, -2%) scale(1.02); }
+@keyframes auroraDrift{
+    0%{transform:translate(0,0) scale(1);}
+    50%{transform:translate(-2%,3%) scale(1.06);}
+    100%{transform:translate(3%,-2%) scale(1.02);}
 }
 
-.projects > .container{
-    position: relative;
-    z-index: 2;
+.projects>.container{
+    position:relative;
+    z-index:2;
 }
+
+/* =========================
+   Grid
+========================= */
 
 .projects-grid{
-    position: relative;
-    z-index: 2;
+    position:relative;
+    z-index:2;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
     gap:35px;
     margin-top:50px;
+    align-items:stretch;
 }
 
-/* --- Cards: glass, bouncy pop-in, alternating tilt --- */
+/* =========================
+   Cards
+========================= */
 
 .project-card{
-    position: relative;
-    background: rgba(255,255,255,.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,.8);
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    background:rgba(255,255,255,.75);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.8);
     border-radius:18px;
     overflow:hidden;
     box-shadow:0 12px 30px rgba(0,0,0,.08);
-    transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease;
-    animation: popIn .6s cubic-bezier(.34,1.56,.64,1) both;
+    transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s ease;
+    animation:popIn .6s cubic-bezier(.34,1.56,.64,1) both;
 }
 
-.project-card:nth-child(1){ animation-delay: .05s; }
-.project-card:nth-child(2){ animation-delay: .15s; }
-.project-card:nth-child(3){ animation-delay: .25s; }
-.project-card:nth-child(4){ animation-delay: .35s; }
-.project-card:nth-child(5){ animation-delay: .45s; }
-.project-card:nth-child(6){ animation-delay: .55s; }
+.project-card:nth-child(1){animation-delay:.05s;}
+.project-card:nth-child(2){animation-delay:.15s;}
+.project-card:nth-child(3){animation-delay:.25s;}
+.project-card:nth-child(4){animation-delay:.35s;}
+.project-card:nth-child(5){animation-delay:.45s;}
+.project-card:nth-child(6){animation-delay:.55s;}
 
 .project-card:nth-child(odd):hover{
     transform:translateY(-10px) rotate(-1deg);
@@ -86,40 +98,62 @@
     box-shadow:0 20px 40px rgba(0,0,0,.18);
 }
 
-/* --- Image: zoom + gradient wash on hover --- */
+/* =========================
+   Images
+========================= */
 
-.project-card .project-image{
-    position: relative;
-    overflow: hidden;
+.project-image{
+    height:230px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background:#fff;
+    position:relative;
 }
 
-.project-card img{
+.project-image img{
     width:100%;
-    height:230px;
-    object-fit:cover;
-    display:block;
-    transition: transform .5s ease;
+    height:100%;
+    object-fit:contain;
+    padding:15px;
+    transition:transform .5s ease;
 }
 
 .project-card:hover img{
-    transform: scale(1.08);
+    transform:scale(1.05);
 }
 
-.project-card .project-image::after{
+.project-image::after{
     content:"";
     position:absolute;
     inset:0;
-    background: linear-gradient(180deg, transparent 50%, rgba(15,23,42,.35) 100%);
+    background:linear-gradient(180deg,transparent 50%,rgba(15,23,42,.25) 100%);
     opacity:0;
-    transition: opacity .35s ease;
+    transition:.3s;
 }
 
 .project-card:hover .project-image::after{
     opacity:1;
 }
 
+/* =========================
+   Content
+========================= */
+
 .project-content{
     padding:25px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+}
+
+
+.project-category{
+    font-size:.95rem;
+    color:#444;
+    margin-bottom:12px;
+    font-weight:600;
 }
 
 .project-content h3{
@@ -130,11 +164,14 @@
 
 .project-content p{
     color:var(--gray);
+    line-height:1.7;
+    min-height:120px;
     margin-bottom:20px;
-    line-height: 1.7;
 }
 
-/* --- Tech stack: playful staggered pop, wiggle on hover --- */
+/* =========================
+   Tech Stack
+========================= */
 
 .tech-stack{
     display:flex;
@@ -144,88 +181,115 @@
 }
 
 .tech-stack span{
-    display: inline-block;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
     background:#eff6ff;
     color:var(--primary);
-    padding:8px 14px;
+    padding:8px 16px;
     border-radius:50px;
     font-size:.85rem;
     font-weight:600;
-    transition: transform .25s cubic-bezier(.34,1.56,.64,1), background .25s, color .25s;
-    animation: tagPop .4s cubic-bezier(.34,1.56,.64,1) both;
+    white-space:nowrap;
+    height:40px;
+    transition:
+        transform .25s cubic-bezier(.34,1.56,.64,1),
+        background .25s,
+        color .25s;
+    animation:tagPop .4s cubic-bezier(.34,1.56,.64,1) both;
 }
-
-.tech-stack span:nth-child(1){ animation-delay: .1s; }
-.tech-stack span:nth-child(2){ animation-delay: .16s; }
-.tech-stack span:nth-child(3){ animation-delay: .22s; }
-.tech-stack span:nth-child(4){ animation-delay: .28s; }
-.tech-stack span:nth-child(5){ animation-delay: .34s; }
-.tech-stack span:nth-child(6){ animation-delay: .4s; }
 
 .tech-stack span:hover{
-    background: var(--primary);
-    color: #fff;
-    transform: translateY(-3px) rotate(-2deg) scale(1.06);
+    background:var(--primary);
+    color:#fff;
+    transform:translateY(-3px) scale(1.05);
 }
 
-/* --- Buttons --- */
+/* =========================
+   Buttons
+========================= */
 
 .project-buttons{
     display:flex;
     gap:15px;
+    margin-top:auto;
 }
 
 .project-buttons .btn{
     flex:1;
     text-align:center;
-    transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
 }
 
 .project-buttons .btn:hover{
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px -6px rgba(37,99,235,.4);
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(37,99,235,.3);
 }
 
-/* --- Keyframes --- */
+/* =========================
+   Animations
+========================= */
 
 @keyframes popIn{
-    from{ opacity:0; transform: translateY(28px) scale(.92); }
-    to{ opacity:1; transform: translateY(0) scale(1); }
+    from{
+        opacity:0;
+        transform:translateY(28px) scale(.92);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
 }
 
 @keyframes tagPop{
-    from{ opacity:0; transform: scale(.5); }
-    to{ opacity:1; transform: scale(1); }
-}
-
-@supports (animation-timeline: view()) {
-    .project-card{
-        animation-timeline: view();
-        animation-range: entry 0% cover 30%;
+    from{
+        opacity:0;
+        transform:scale(.5);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
     }
 }
 
-@media(prefers-reduced-motion: reduce){
+/* =========================
+   Scroll Animation
+========================= */
+
+@supports(animation-timeline:view()){
+    .project-card{
+        animation-timeline:view();
+        animation-range:entry 0% cover 30%;
+    }
+}
+
+/* =========================
+   Accessibility
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
     .projects::before,
     .project-card,
-    .project-card img,
+    .project-image img,
     .tech-stack span{
-        animation: none;
-        transition: none;
+        animation:none;
+        transition:none;
     }
-    .project-card:hover{ transform: none; }
-    .project-card:hover img{ transform: none; }
-    .tech-stack span:hover{ transform: none; }
+
 }
+
+/* =========================
+   Responsive
+========================= */
 
 @media(max-width:768px){
 
-.project-buttons{
-    flex-direction:column;
-}
+    .projects-grid{
+        grid-template-columns:1fr;
+    }
 
-.projects-grid{
-    grid-template-columns:1fr;
-}
+    .project-buttons{
+        flex-direction:column;
+    }
 
 }
