@@ -20,14 +20,274 @@
   --transition: all .3s ease;
 }
 
+/* Light Mode: Buttons on white/light backgrounds MUST have sharp dark/black text (#0f172a) */
+body:not(.dark-mode) .filter-btn,
+body:not(.dark-mode) .skill-tab-btn,
+body:not(.dark-mode) .tab-btn,
+body:not(.dark-mode) .option-btn,
+body:not(.dark-mode) .theme-chip,
+body:not(.dark-mode) .quiz-option-btn,
+body:not(.dark-mode) .btn-outline,
+body:not(.dark-mode) .btn-outline-demo,
+body:not(.dark-mode) .copy-btn,
+body:not(.dark-mode) .close-btn {
+  color: #0f172a !important;
+}
+
+body:not(.dark-mode) .filter-btn.active,
+body:not(.dark-mode) .skill-tab-btn.active,
+body:not(.dark-mode) .tab-btn.active,
+body:not(.dark-mode) .option-btn.active {
+  color: #2563eb !important;
+}
+
+/* ============================================================
+   DARK MODE COMPREHENSIVE OVERRIDES
+   Ensures NO white backgrounds with light text exist in Dark Mode
+============================================================ */
+
+body.dark-mode {
+  --background: #0b0f19;
+  --secondary: #ffffff;
+  --text: #f8fafc;
+  --gray: #e2e8f0;
+  --border: #334155;
+  --white: #1e293b;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+section,
+.hero,
+.about,
+.skills,
+.projects,
+.contact,
+.design-lab,
+.icebreaker,
+.quiz-game,
+.experience,
+.certification {
+  background: transparent !important;
+}
+
+body.dark-mode section,
+body.dark-mode .hero,
+body.dark-mode .about,
+body.dark-mode .skills,
+body.dark-mode .projects,
+body.dark-mode .contact,
+body.dark-mode .design-lab,
+body.dark-mode .icebreaker,
+body.dark-mode .quiz-game,
+body.dark-mode .experience,
+body.dark-mode .certification {
+  background: transparent !important;
+  color: #f8fafc !important;
+}
+
+body.dark-mode .navbar {
+  background: rgba(11, 15, 25, 0.95) !important;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.8) !important;
+  backdrop-filter: blur(16px);
+}
+
+body.dark-mode .nav-menu {
+  background: #0b0f19 !important;
+}
+
+body.dark-mode .nav-menu a {
+  color: #f8fafc !important;
+}
+
+/* Dark Mode Headings */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode .section-title,
+body.dark-mode .hero-title,
+body.dark-mode .hero-subtitle,
+body.dark-mode .stat-number,
+body.dark-mode .project-content h3,
+body.dark-mode .contact-card h3,
+body.dark-mode .workflow-card h4,
+body.dark-mode .skill-card-top h3,
+body.dark-mode .question-text,
+body.dark-mode .about-info h4,
+body.dark-mode .case-box h3,
+body.dark-mode .impact-section h3,
+body.dark-mode .section-block h3,
+body.dark-mode .lab-card-header h3,
+body.dark-mode .token-label,
+body.dark-mode .control-group label {
+  color: #ffffff !important;
+}
+
+/* Dark Mode Paragraphs & Body Text */
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode li,
+body.dark-mode label,
+body.dark-mode .section-subtitle,
+body.dark-mode .hero-description,
+body.dark-mode .stat-label,
+body.dark-mode .project-content p,
+body.dark-mode .contact-card p,
+body.dark-mode .workflow-card p,
+body.dark-mode .skill-item-card p,
+body.dark-mode .about-content p,
+body.dark-mode .case-box p,
+body.dark-mode .impact-section li,
+body.dark-mode .lab-card-desc,
+body.dark-mode .token-var,
+body.dark-mode .toggle-label,
+body.dark-mode .result-desc {
+  color: #e2e8f0 !important;
+}
+
+/* All Card Containers in Dark Mode */
+body.dark-mode .card,
+body.dark-mode .hero-stats,
+body.dark-mode .skill-item-card,
+body.dark-mode .project-card,
+body.dark-mode .contact-card,
+body.dark-mode .contact-form,
+body.dark-mode .lab-card,
+body.dark-mode .icebreaker-box,
+body.dark-mode .game-card,
+body.dark-mode .certificate-card,
+body.dark-mode .timeline-content,
+body.dark-mode .ux-workflow-container,
+body.dark-mode .workflow-card,
+body.dark-mode .about-info div,
+body.dark-mode .token-row,
+body.dark-mode .typography-preview,
+body.dark-mode .answer-explanation {
+  background: rgba(15, 23, 42, 0.9) !important;
+  border-color: rgba(51, 65, 85, 0.7) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(16px);
+}
+
+/* Buttons in Dark Mode */
+body.dark-mode .hero-buttons .btn-outline,
+body.dark-mode .hero-social a,
+body.dark-mode .contact-social a,
+body.dark-mode .filter-btn,
+body.dark-mode .skill-tab-btn,
+body.dark-mode .option-btn,
+body.dark-mode .theme-chip,
+body.dark-mode .quiz-option-btn,
+body.dark-mode .btn-outline,
+body.dark-mode .btn-outline-demo,
+body.dark-mode .copy-btn,
+body.dark-mode .close-btn {
+  background: rgba(30, 41, 59, 0.9) !important;
+  border-color: #334155 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .quiz-option-btn .option-letter {
+  background: #334155 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .filter-btn.active,
+body.dark-mode .skill-tab-btn.active,
+body.dark-mode .tab-btn.active,
+body.dark-mode .option-btn.active {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+
+/* Modal Specific Dark Mode Fixes */
+body.dark-mode .modal-container {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  border-color: #334155 !important;
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .modal-footer,
+body.dark-mode .modal-tabs {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+body.dark-mode .modal-title-section h2 {
+  color: #ffffff !important;
+}
+
+body.dark-mode .modal-title-section p {
+  color: #e2e8f0 !important;
+}
+
+body.dark-mode .case-box {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+body.dark-mode .case-box.highlight {
+  background: rgba(14, 165, 233, 0.15) !important;
+  border-color: rgba(56, 189, 248, 0.4) !important;
+}
+
+body.dark-mode .persona-card,
+body.dark-mode .wireframe-pill,
+body.dark-mode .typography-spec,
+body.dark-mode .color-swatch-box {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+body.dark-mode .color-name {
+  color: #ffffff !important;
+}
+
+body.dark-mode .color-hex {
+  color: #94a3b8 !important;
+}
+
+/* Badges in Dark Mode */
+body.dark-mode .hero-badge,
+body.dark-mode .section-badge,
+body.dark-mode .icebreaker-badge,
+body.dark-mode .game-badge {
+  background: rgba(37, 99, 235, 0.25) !important;
+  color: #38bdf8 !important;
+  border-color: rgba(56, 189, 248, 0.4) !important;
+}
+
+/* Form Inputs in Dark Mode */
+body.dark-mode input,
+body.dark-mode textarea {
+  background: rgba(15, 23, 42, 0.9) !important;
+  border-color: #475569 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
 /* ===========================
-   RESET
+   RESET & RESPONSIVE FIXES
 =========================== */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 html{
@@ -39,10 +299,12 @@ body{
     background:var(--background);
     color:var(--text);
     line-height:1.7;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 img{
-    width:100%;
+    max-width:100%;
+    height:auto;
     display:block;
 }
 
@@ -86,12 +348,14 @@ section{
     text-align:center;
     color:var(--secondary);
     margin-bottom:15px;
+    word-wrap: break-word;
 }
 
 .section-subtitle{
     text-align:center;
     color:var(--gray);
     margin-bottom:60px;
+    word-wrap: break-word;
 }
 
 /* ===========================
@@ -170,7 +434,7 @@ section{
 }
 
 /* ===========================
-   RESPONSIVE
+   RESPONSIVE MEDIA QUERIES
 =========================== */
 
 @media(max-width:992px){
@@ -180,7 +444,7 @@ section{
 }
 
 section{
-    padding:80px 0;
+    padding:70px 0;
 }
 
 }
@@ -188,27 +452,37 @@ section{
 @media(max-width:768px){
 
 .container{
-    width:95%;
+    width:92%;
 }
 
 .section-title{
-    font-size:1.8rem;
+    font-size:1.75rem;
 }
 
 .section-subtitle{
     font-size:.95rem;
+    margin-bottom: 35px;
 }
 
 .btn{
-    padding:12px 24px;
+    padding:12px 22px;
+    font-size: 0.95rem;
 }
 
 }
 
 @media(max-width:480px){
 
+.container{
+    width:94%;
+}
+
 .section-title{
     font-size:1.5rem;
+}
+
+section {
+    padding: 50px 0;
 }
 
 }

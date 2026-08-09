@@ -212,7 +212,7 @@
     width: max-content;
     padding: 12px 26px;
     background: var(--primary);
-    color: white;
+    color: white !important;
     font-weight: 600;
     border-radius: 10px;
     box-shadow: 0 10px 24px -8px rgba(37,99,235,.5);
@@ -228,6 +228,29 @@
 
 .certificate-content .btn:active{
     transform: translateY(-1px) scale(.98);
+}
+
+/* EXPLICIT DARK MODE FOR CERTIFICATION */
+body.dark-mode .certificate-card {
+    background: rgba(15, 23, 42, 0.85) !important;
+    border-color: rgba(51, 65, 85, 0.7) !important;
+}
+
+body.dark-mode .certificate-badge {
+    background: rgba(37, 99, 235, 0.25) !important;
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .certificate-content h3 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .certificate-content h4 {
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .certificate-content p {
+    color: #e2e8f0 !important;
 }
 
 @media(prefers-reduced-motion: reduce){

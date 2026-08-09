@@ -1,9 +1,26 @@
-import React, { useState } from "react";
-import { FaBars, FaTimes, FaPalette, FaLaptopCode } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import { FaBars, FaTimes, FaPalette, FaLaptopCode, FaMoon, FaSun, FaGamepad } from "react-icons/fa";
 import "./Navbar.css";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -49,13 +66,23 @@ function Navbar() {
             <FaPalette /> UX Lab
           </a>
 
-          <a href="#experience" onClick={closeMenu}>
-            Experience
+          <a href="#quiz-game" onClick={closeMenu} className="game-nav-btn">
+            <FaGamepad /> Quiz Game
           </a>
 
           <a href="#contact" onClick={closeMenu}>
             Contact
           </a>
+
+          {/* Dark Mode Toggle Button */}
+          <button
+            className="theme-toggle-btn"
+            onClick={toggleDarkMode}
+            aria-label="Toggle Dark Mode"
+            title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          >
+            {darkMode ? <FaSun className="sun-icon" /> : <FaMoon className="moon-icon" />}
+          </button>
 
           {/* Resume Button */}
           <a
@@ -69,9 +96,19 @@ function Navbar() {
           </a>
         </nav>
 
-        {/* Mobile Menu Icon */}
-        <div className="menu-icon" onClick={toggleMenu}>
-          {menuOpen ? <FaTimes /> : <FaBars />}
+        {/* Mobile Action Controls */}
+        <div className="mobile-controls">
+          <button
+            className="theme-toggle-btn mobile-theme-btn"
+            onClick={toggleDarkMode}
+            aria-label="Toggle Dark Mode"
+          >
+            {darkMode ? <FaSun className="sun-icon" /> : <FaMoon className="moon-icon" />}
+          </button>
+          
+          <div className="menu-icon" onClick={toggleMenu}>
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </div>
         </div>
 
       </div>

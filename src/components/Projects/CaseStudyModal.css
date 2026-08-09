@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 16px;
   animation: fadeInOverlay 0.3s ease-out;
 }
 
@@ -39,7 +39,7 @@
 
 /* Header */
 .modal-header {
-  padding: 24px 32px 16px;
+  padding: 20px 24px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -50,6 +50,7 @@
   display: flex;
   gap: 10px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .modal-category {
@@ -83,9 +84,10 @@
   justify-content: center;
   align-items: center;
   font-size: 1.1rem;
-  color: #64748b;
+  color: #0f172a;
   cursor: pointer;
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 .close-btn:hover {
@@ -96,11 +98,11 @@
 
 /* Title */
 .modal-title-section {
-  padding: 0 32px 16px;
+  padding: 0 24px 16px;
 }
 
 .modal-title-section h2 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: #0f172a;
   font-weight: 700;
   margin-bottom: 6px;
@@ -108,26 +110,28 @@
 
 .modal-title-section p {
   color: #64748b;
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.5;
 }
 
 /* Tabs */
 .modal-tabs {
   display: flex;
-  gap: 12px;
-  padding: 0 32px 16px;
+  gap: 10px;
+  padding: 0 24px 16px;
   border-bottom: 1px solid #e2e8f0;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .tab-btn {
   background: none;
   border: none;
-  padding: 10px 18px;
+  padding: 8px 16px;
   border-radius: 10px;
   font-weight: 600;
-  font-size: 0.95rem;
-  color: #64748b;
+  font-size: 0.9rem;
+  color: #0f172a;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -142,13 +146,13 @@
 
 .tab-btn.active {
   background: #2563eb;
-  color: #ffffff;
+  color: #ffffff !important;
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
 }
 
 /* Body */
 .modal-body {
-  padding: 24px 32px;
+  padding: 20px 24px;
   overflow-y: auto;
   flex: 1;
 }
@@ -164,7 +168,7 @@
 
 .modal-image-wrapper {
   width: 100%;
-  height: 240px;
+  height: 220px;
   border-radius: 16px;
   overflow: hidden;
   background: #f8fafc;
@@ -187,7 +191,7 @@
 
 .case-box {
   background: #f8fafc;
-  padding: 20px;
+  padding: 18px;
   border-radius: 14px;
   border: 1px solid #e2e8f0;
 }
@@ -198,19 +202,19 @@
 }
 
 .case-box h3 {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: #0f172a;
   margin-bottom: 8px;
 }
 
 .case-box p {
   color: #475569;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   line-height: 1.6;
 }
 
 .impact-section h3 {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: #0f172a;
   margin-bottom: 12px;
 }
@@ -225,7 +229,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: #334155;
 }
 
@@ -239,7 +243,7 @@
 }
 
 .section-block h3 {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: #0f172a;
   margin-bottom: 12px;
 }
@@ -256,13 +260,13 @@
   gap: 14px;
   background: #f8fafc;
   border: 1px solid #e2e8f0;
-  padding: 16px;
+  padding: 14px;
   border-radius: 12px;
 }
 
 .persona-avatar {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: linear-gradient(135deg, #2563eb, #38bdf8);
   color: white;
@@ -270,7 +274,8 @@
   justify-content: center;
   align-items: center;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  flex-shrink: 0;
 }
 
 .wireframe-tags {
@@ -284,7 +289,7 @@
   color: #475569;
   padding: 8px 16px;
   border-radius: 20px;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 500;
   border: 1px solid #cbd5e1;
 }
@@ -292,8 +297,8 @@
 /* Color Tokens */
 .palette-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
 }
 
 .color-swatch-box {
@@ -305,46 +310,47 @@
 }
 
 .color-preview {
-  height: 60px;
+  height: 50px;
 }
 
 .color-details {
-  padding: 10px;
+  padding: 8px 10px;
   display: flex;
   flex-direction: column;
 }
 
 .color-name {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: #0f172a;
 }
 
 .color-hex {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: #64748b;
   font-family: monospace;
 }
 
 .typography-spec {
   background: #f8fafc;
-  padding: 16px;
+  padding: 14px;
   border-radius: 12px;
   border: 1px solid #e2e8f0;
   font-family: monospace;
   color: #2563eb;
   font-weight: 600;
+  font-size: 0.88rem;
 }
 
 /* Footer */
 .modal-footer {
-  padding: 20px 32px;
+  padding: 16px 24px;
   border-top: 1px solid #f1f5f9;
   background: #f8fafc;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
@@ -355,7 +361,7 @@
 }
 
 .tech-pills span {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   background: #e2e8f0;
   color: #475569;
   padding: 4px 10px;
@@ -365,7 +371,8 @@
 
 .modal-actions {
   display: flex;
-  gap: 12px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .btn-figma {
@@ -392,13 +399,83 @@
   background: #1e293b !important;
 }
 
+/* EXPLICIT DARK MODE FOR CASE STUDY MODAL */
+body.dark-mode .modal-container {
+  background: #0f172a !important;
+  border-color: #334155 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .modal-footer,
+body.dark-mode .modal-tabs {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+body.dark-mode .modal-title-section h2,
+body.dark-mode .case-box h3,
+body.dark-mode .impact-section h3,
+body.dark-mode .section-block h3,
+body.dark-mode .color-name {
+  color: #ffffff !important;
+}
+
+body.dark-mode .modal-title-section p,
+body.dark-mode .case-box p,
+body.dark-mode .impact-section li,
+body.dark-mode .color-hex {
+  color: #e2e8f0 !important;
+}
+
+body.dark-mode .tab-btn {
+  color: #e2e8f0 !important;
+}
+
+body.dark-mode .tab-btn.active {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .close-btn {
+  background: #334155 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .case-box,
+body.dark-mode .persona-card,
+body.dark-mode .wireframe-pill,
+body.dark-mode .color-swatch-box,
+body.dark-mode .typography-spec {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .case-box.highlight {
+  background: rgba(14, 165, 233, 0.15) !important;
+  border-color: rgba(56, 189, 248, 0.4) !important;
+}
+
+body.dark-mode .tech-pills span {
+  background: rgba(37, 99, 235, 0.25) !important;
+  color: #38bdf8 !important;
+}
+
 @media (max-width: 768px) {
+  .modal-overlay {
+    padding: 10px;
+  }
   .modal-container {
-    max-height: 95vh;
+    max-height: 96vh;
+    border-radius: 18px;
   }
   .modal-header, .modal-title-section, .modal-tabs, .modal-body, .modal-footer {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .modal-title-section h2 {
+    font-size: 1.35rem;
   }
   .case-grid, .persona-grid {
     grid-template-columns: 1fr;

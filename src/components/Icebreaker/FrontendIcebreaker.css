@@ -79,7 +79,7 @@
   border-radius: 12px;
   font-weight: 600;
   font-size: 0.9rem;
-  color: #475569;
+  color: #0f172a;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -97,7 +97,7 @@
 .option-btn.active {
   background: #eff6ff;
   border-color: var(--primary, #2563eb);
-  color: var(--primary, #2563eb);
+  color: var(--primary, #2563eb) !important;
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
 }
 
@@ -167,7 +167,7 @@
 
 .btn-ice-primary {
   background: var(--primary, #2563eb);
-  color: white;
+  color: white !important;
   padding: 12px 20px;
   border-radius: 12px;
   font-weight: 600;
@@ -202,6 +202,8 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #334155;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .window-dots {
@@ -444,8 +446,54 @@
   line-height: 1.6;
 }
 
+/* ===================================================
+   EXPLICIT DARK MODE OVERRIDES FOR FRONTEND ICEBREAKER
+=================================================== */
+
+body.dark-mode .icebreaker-box {
+  background: rgba(15, 23, 42, 0.85) !important;
+  border-color: rgba(51, 65, 85, 0.7) !important;
+}
+
+body.dark-mode .control-group label {
+  color: #ffffff !important;
+}
+
+body.dark-mode .option-btn {
+  background: rgba(30, 41, 59, 0.9) !important;
+  border-color: #334155 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .option-btn.active {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border-color: #2563eb !important;
+}
+
+body.dark-mode .checkbox-label {
+  color: #e2e8f0 !important;
+}
+
+body.dark-mode .icebreaker-cta p {
+  color: #cbd5e1 !important;
+}
+
 @media (max-width: 992px) {
   .icebreaker-box {
     grid-template-columns: 1fr;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .ui-stats-row, .product-grid {
+    grid-template-columns: 1fr;
+  }
+  .dynamic-ui-container {
+    padding: 16px;
+  }
+  .bar-chart {
+    gap: 8px;
   }
 }

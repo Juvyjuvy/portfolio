@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaCode, FaLaptopCode, FaCheck, FaCopy, FaPaperPlane, FaMobileAlt, FaShoppingBag, FaChartLine } from "react-icons/fa";
 import "./FrontendIcebreaker.css";
 
@@ -9,6 +9,17 @@ function FrontendIcebreaker() {
   const [enableDarkMode, setEnableDarkMode] = useState(false);
   const [activeTab, setActiveTab] = useState("preview"); // preview | code
   const [copied, setCopied] = useState(false);
+  const [isGlobalDark, setIsGlobalDark] = useState(false);
+
+  useEffect(() => {
+    const checkDark = () => setIsGlobalDark(document.body.classList.contains("dark-mode"));
+    checkDark();
+    const observer = new MutationObserver(checkDark);
+    observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
+
+  const isDark = enableDarkMode || isGlobalDark;
 
   const themes = {
     indigo: { primary: "#2563eb", accent: "#38bdf8", bg: "#f8fafc", cardBg: "#ffffff", text: "#0f172a" },
@@ -167,10 +178,10 @@ export default function CustomApp() {
             <div className="preview-body">
               {activeTab === "preview" ? (
                 <div
-                  className={`dynamic-ui-container ${enableDarkMode ? "dark-override" : ""} ${enableAnimations ? "animated" : ""}`}
+                  className={`dynamic-ui-container ${isDark ? "dark-override" : ""} ${enableAnimations ? "animated" : ""}`}
                   style={{
-                    backgroundColor: enableDarkMode ? "#0f172a" : currentTheme.bg,
-                    color: enableDarkMode ? "#ffffff" : currentTheme.text,
+                    backgroundColor: isDark ? "#0f172a" : currentTheme.bg,
+                    color: isDark ? "#ffffff" : currentTheme.text,
                   }}
                 >
                   {/* Dynamic UI Content Rendering */}
@@ -181,18 +192,18 @@ export default function CustomApp() {
                         <span className="status-pill" style={{ backgroundColor: currentTheme.primary }}>Active</span>
                       </div>
                       <div className="ui-stats-row">
-                        <div className="ui-card" style={{ backgroundColor: enableDarkMode ? "#1e293b" : currentTheme.cardBg }}>
+                        <div className="ui-card" style={{ backgroundColor: isDark ? "#1e293b" : currentTheme.cardBg, color: isDark ? "#ffffff" : currentTheme.text }}>
                           <span>Total Visitors</span>
                           <h3>24,520</h3>
                           <small style={{ color: "#10b981" }}>+14% this month</small>
                         </div>
-                        <div className="ui-card" style={{ backgroundColor: enableDarkMode ? "#1e293b" : currentTheme.cardBg }}>
+                        <div className="ui-card" style={{ backgroundColor: isDark ? "#1e293b" : currentTheme.cardBg, color: isDark ? "#ffffff" : currentTheme.text }}>
                           <span>Conversion Rate</span>
                           <h3>4.8%</h3>
                           <small style={{ color: currentTheme.primary }}>Optimal UX</small>
                         </div>
                       </div>
-                      <div className="ui-chart-box" style={{ backgroundColor: enableDarkMode ? "#1e293b" : currentTheme.cardBg }}>
+                      <div className="ui-chart-box" style={{ backgroundColor: isDark ? "#1e293b" : currentTheme.cardBg, color: isDark ? "#ffffff" : currentTheme.text }}>
                         <span>Realtime Traffic Volume</span>
                         <div className="bar-chart">
                           <div className="bar" style={{ height: "40%", backgroundColor: currentTheme.accent }}></div>
@@ -213,7 +224,7 @@ export default function CustomApp() {
                       </div>
                       <div className="product-grid">
                         {[1, 2].map((item) => (
-                          <div key={item} className="product-card" style={{ backgroundColor: enableDarkMode ? "#1e293b" : currentTheme.cardBg }}>
+                          <div key={item} className="product-card" style={{ backgroundColor: isDark ? "#1e293b" : currentTheme.cardBg, color: isDark ? "#ffffff" : currentTheme.text }}>
                             <div className="product-img-placeholder" style={{ backgroundColor: currentTheme.accent }}>
                               Product #{item}
                             </div>
@@ -228,14 +239,14 @@ export default function CustomApp() {
 
                   {appType === "mobile" && (
                     <div className="ui-mobile-wrapper">
-                      <div className="mobile-frame" style={{ borderColor: currentTheme.primary, backgroundColor: enableDarkMode ? "#1e293b" : "#ffffff" }}>
+                      <div className="mobile-frame" style={{ borderColor: currentTheme.primary, backgroundColor: isDark ? "#1e293b" : "#ffffff", color: isDark ? "#ffffff" : "#0f172a" }}>
                         <div className="mobile-header" style={{ backgroundColor: currentTheme.primary, color: "white" }}>
                           <span>9:41 AM</span>
                           <strong>Mobile UX Flow</strong>
                         </div>
                         <div className="mobile-content">
                           <div className="avatar-chip">Welcome Back, Juvy! 👋</div>
-                          <div className="widget-card" style={{ backgroundColor: currentTheme.bg, color: currentTheme.text }}>
+                          <div className="widget-card" style={{ backgroundColor: isDark ? "#0f172a" : currentTheme.bg, color: isDark ? "#ffffff" : currentTheme.text }}>
                             <span>Today's Goal</span>
                             <h4>Seamless Frontend React Code</h4>
                           </div>

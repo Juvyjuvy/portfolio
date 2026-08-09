@@ -79,27 +79,16 @@
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 25px;
 }
 
 .nav-menu a {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 500;
     color: var(--text);
     transition: color .3s ease, transform .25s cubic-bezier(.34,1.56,.64,1);
     position: relative;
-    animation: fadeIn .5s ease both;
 }
-
-.nav-menu a:nth-child(1){ animation-delay: .1s; }
-.nav-menu a:nth-child(2){ animation-delay: .16s; }
-.nav-menu a:nth-child(3){ animation-delay: .22s; }
-.nav-menu a:nth-child(4){ animation-delay: .28s; }
-.nav-menu a:nth-child(5){ animation-delay: .34s; }
-.nav-menu a:nth-child(6){ animation-delay: .4s; }
-.nav-menu a:nth-child(7){ animation-delay: .46s; }
-
-/* Hover Effect — bouncy underline instead of flat slide */
 
 .nav-menu a::after {
     content: "";
@@ -121,6 +110,39 @@
     width: 100%;
 }
 
+.game-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #d97706 !important;
+    font-weight: 600 !important;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #eff6ff;
+    border: 1px solid #cbd5e1;
+    color: var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.1) rotate(15deg);
+    background: var(--primary);
+    color: white;
+}
+
+.sun-icon { color: #f59e0b; }
+.moon-icon { color: #3b82f6; }
+
 /* ===========================
    RESUME BUTTON
 =========================== */
@@ -130,9 +152,8 @@
     background: var(--primary);
     color: white !important;
     border-radius: 8px;
-    transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease, background .3s ease;
-    animation: fadeIn .5s ease .5s both;
-    box-shadow: 0 0 0 0 rgba(37,99,235,.4);
+    transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
 .resume-btn:hover {
@@ -141,75 +162,74 @@
     box-shadow: 0 10px 20px -6px rgba(37,99,235,.5);
 }
 
-.resume-btn:active {
-    transform: translateY(-1px) scale(.97);
-}
-
 .resume-btn::after {
     display: none;
 }
 
 /* ===========================
-   MINI GAME TRIGGER
+   MOBILE CONTROLS
 =========================== */
 
-.game-trigger {
+.mobile-controls {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    border: none;
-    border-radius: 50%;
-    background: #eff6ff;
-    color: var(--primary);
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease, background .3s ease;
-    animation: triggerPop .5s cubic-bezier(.34,1.56,.64,1) .55s both,
-               triggerPulse 2.4s ease-in-out 1.2s infinite;
+    gap: 16px;
 }
-
-@keyframes triggerPop {
-    from { opacity: 0; transform: scale(.4) rotate(-90deg); }
-    to { opacity: 1; transform: scale(1) rotate(0); }
-}
-
-@keyframes triggerPulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(37,99,235,.35); }
-    50% { box-shadow: 0 0 0 8px rgba(37,99,235,0); }
-}
-
-.game-trigger:hover {
-    transform: scale(1.15) rotate(-8deg);
-    background: var(--primary);
-    color: white;
-}
-
-/* ===========================
-   MENU ICON
-=========================== */
 
 .menu-icon {
     display: none;
     font-size: 1.8rem;
     cursor: pointer;
     color: var(--secondary);
-    transition: transform .3s cubic-bezier(.34,1.56,.64,1);
 }
 
-.menu-icon:active {
-    transform: scale(.85) rotate(90deg);
+.mobile-theme-btn {
+    display: none;
 }
 
-/* ===========================
-   MOBILE
-=========================== */
+/* EXPLICIT DARK MODE FOR NAVBAR */
+body.dark-mode .navbar {
+    background: rgba(11, 15, 25, 0.95) !important;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.8) !important;
+    backdrop-filter: blur(16px);
+}
+
+body.dark-mode .logo {
+    color: #ffffff !important;
+}
+
+body.dark-mode .logo-tag {
+    background: rgba(37, 99, 235, 0.25) !important;
+    color: #38bdf8 !important;
+    border-color: rgba(56, 189, 248, 0.4) !important;
+}
+
+body.dark-mode .nav-menu a {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .nav-menu a:hover {
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .theme-toggle-btn {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f59e0b !important;
+}
+
+body.dark-mode .menu-icon {
+    color: #ffffff !important;
+}
 
 @media screen and (max-width: 992px) {
 
-    .menu-icon {
-        display: block;
+    .menu-icon, .mobile-theme-btn {
+        display: flex;
+    }
+
+    .nav-menu .theme-toggle-btn {
+        display: none;
     }
 
     .nav-menu {
@@ -220,32 +240,18 @@
         background: white;
         flex-direction: column;
         align-items: center;
-        gap: 25px;
+        gap: 20px;
         padding: 40px 0;
         box-shadow: 0 10px 25px rgba(0,0,0,.08);
         transition: left .45s cubic-bezier(.22,1,.36,1);
     }
 
+    body.dark-mode .nav-menu {
+        background: #0b0f19 !important;
+    }
+
     .nav-menu.active {
         left: 0;
-    }
-
-    /* re-stagger the links each time the mobile menu opens */
-    .nav-menu.active a {
-        animation: slideInUp .4s ease both;
-    }
-
-    .nav-menu.active a:nth-child(1){ animation-delay: .05s; }
-    .nav-menu.active a:nth-child(2){ animation-delay: .1s; }
-    .nav-menu.active a:nth-child(3){ animation-delay: .15s; }
-    .nav-menu.active a:nth-child(4){ animation-delay: .2s; }
-    .nav-menu.active a:nth-child(5){ animation-delay: .25s; }
-    .nav-menu.active a:nth-child(6){ animation-delay: .3s; }
-    .nav-menu.active a:nth-child(7){ animation-delay: .35s; }
-
-    @keyframes slideInUp {
-        from { opacity: 0; transform: translateY(16px); }
-        to { opacity: 1; transform: translateY(0); }
     }
 
     .resume-btn {
@@ -253,44 +259,4 @@
         text-align: center;
     }
 
-    .game-trigger {
-        display: none;
-    }
-
-}
-
-@media screen and (max-width: 576px) {
-
-    .logo {
-        font-size: 1.5rem;
-    }
-
-    .menu-icon {
-        font-size: 1.6rem;
-    }
-
-}
-
-/* ===========================
-   REDUCED MOTION
-=========================== */
-
-@media (prefers-reduced-motion: reduce) {
-    .navbar,
-    .logo,
-    .logo span,
-    .nav-menu a,
-    .resume-btn,
-    .game-trigger,
-    .menu-icon,
-    .nav-menu.active a {
-        animation: none;
-    }
-
-    .nav-menu a:hover,
-    .resume-btn:hover,
-    .game-trigger:hover,
-    .logo:hover {
-        transform: none;
-    }
 }
