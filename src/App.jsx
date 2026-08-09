@@ -2,7 +2,9 @@ import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import About from "./components/About/About";
 import Skills from "./components/Skills/Skills";
+import FrontendIcebreaker from "./components/Icebreaker/FrontendIcebreaker";
 import Projects from "./components/Projects/Projects";
+import DesignLab from "./components/DesignLab/DesignLab";
 import Experience from "./components/Experience/Experience";
 import Certification from "./components/Certification/Certification";
 import Contact from "./components/Contact/Contact";
@@ -28,8 +30,16 @@ function App() {
           <Skills />
         </section>
 
+        <section id="frontend-lab">
+          <FrontendIcebreaker />
+        </section>
+
         <section id="projects">
           <Projects />
+        </section>
+
+        <section id="ux-lab">
+          <DesignLab />
         </section>
 
         <section id="experience">

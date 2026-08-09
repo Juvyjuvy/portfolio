@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaBars, FaTimes, FaPalette, FaLaptopCode } from "react-icons/fa";
 import "./Navbar.css";
 
 function Navbar() {
@@ -20,9 +20,10 @@ function Navbar() {
         {/* Logo */}
         <a href="#home" className="logo">
           Juvy<span>.</span>
+          <span className="logo-tag">UI/UX</span>
         </a>
 
-        {/* Navigation */}
+        {/* Navigation Menu */}
         <nav className={menuOpen ? "nav-menu active" : "nav-menu"}>
           <a href="#home" onClick={closeMenu}>
             Home
@@ -36,16 +37,20 @@ function Navbar() {
             Skills
           </a>
 
+          <a href="#frontend-lab" onClick={closeMenu} className="nav-highlight">
+            <FaLaptopCode /> Live Demo
+          </a>
+
           <a href="#projects" onClick={closeMenu}>
             Projects
           </a>
 
-          <a href="#experience" onClick={closeMenu}>
-            Experience
+          <a href="#ux-lab" onClick={closeMenu}>
+            <FaPalette /> UX Lab
           </a>
 
-          <a href="#certification" onClick={closeMenu}>
-            Certification
+          <a href="#experience" onClick={closeMenu}>
+            Experience
           </a>
 
           <a href="#contact" onClick={closeMenu}>

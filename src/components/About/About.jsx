@@ -1,5 +1,7 @@
+import React from "react";
 import "./About.css";
 import profile from "../../assets/images/profile.png";
+import { FaPalette, FaCode, FaAward, FaDownload } from "react-icons/fa";
 
 function About() {
   return (
@@ -9,58 +11,51 @@ function About() {
         <div className="section-header">
           <h2 className="section-title">About Me</h2>
           <p className="section-subtitle">
-            Get to know me better.
+            Passionate about user experience design, interfaces, and front-end engineering.
           </p>
         </div>
 
         <div className="about-container">
 
-          {/* Left Side */}
+          {/* Left Side Avatar */}
           <div className="about-image">
             <img src={profile} alt="Juvy Aballe" />
           </div>
 
-          {/* Right Side */}
+          {/* Right Side Description */}
           <div className="about-content">
 
-            <h3>Frontend Developer & UI/UX Designer</h3>
+            <h3>UI/UX Designer & React Frontend Developer</h3>
 
             <p>
               Hi! I'm <strong>Juvy E. Aballe Jr.</strong>, a Bachelor of Science
-              in Information Technology graduate with a passion for building
-              modern, responsive, and user-friendly web applications.
+              in Information Technology graduate specializing in <strong>UI/UX Design</strong> and <strong>React.js Frontend Development</strong>.
             </p>
 
             <p>
-              My primary expertise is in <strong>React.js</strong>, HTML, CSS,
-              JavaScript, Bootstrap, and UI/UX design using Figma. I enjoy
-              turning creative ideas into functional websites that provide a
-              great user experience.
+              I bridge the gap between creative visual design and responsive code. Using <strong>Figma</strong>, I design user flows, wireframes, component systems, and high-fidelity interactive prototypes. Then, I translate those designs into clean, modular, and maintainable <strong>React.js</strong> web applications.
             </p>
 
             <p>
               During my internship at <strong>Triangle Outsourcing Corporation</strong>,
-              I gained experience in graphic design, lead generation, computer
-              maintenance, PC cleaning, software installation, and promoting
-              company services through online platforms.
+              I gained practical experience designing promotional media, conducting client lead generation, managing hardware troubleshooting, and supporting digital operations.
             </p>
 
             <p>
-              I also earned a <strong>TOPCIT Level 2 Certification</strong>
-              with a score of <strong>256</strong>, demonstrating my practical
-              knowledge and competency in Information Technology.
+              I also hold a <strong>TOPCIT Level 2 Certification</strong> (Score: <strong>256</strong>), demonstrating verified competency in software engineering, database management, and problem-solving.
             </p>
 
+            {/* Quick Info Grid */}
             <div className="about-info">
 
               <div>
-                <span>Name</span>
+                <span>Full Name</span>
                 <h4>Juvy E. Aballe Jr.</h4>
               </div>
 
               <div>
-                <span>Email</span>
-                <h4>juvyaballe46@gmail.com</h4>
+                <span>Primary Discipline</span>
+                <h4>UI/UX & React Frontend</h4>
               </div>
 
               <div>
@@ -69,14 +64,14 @@ function About() {
               </div>
 
               <div>
-                <span>Status</span>
-                <h4>Open for Work</h4>
+                <span>Work Availability</span>
+                <h4>Available for Opportunities</h4>
               </div>
 
             </div>
 
-            <a href="/resume.pdf" className="btn">
-              Download Resume
+            <a href="/resume.pdf" className="btn btn-primary" target="_blank" rel="noreferrer">
+              <FaDownload /> Download CV
             </a>
 
           </div>

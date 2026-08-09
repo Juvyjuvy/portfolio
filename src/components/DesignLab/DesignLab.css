@@ -1,0 +1,337 @@
+/* DesignLab.css */
+.design-lab {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0;
+  background: #f1f5f9;
+}
+
+.design-lab::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  z-index: 0;
+  background: 
+    radial-gradient(40% 40% at 75% 20%, rgba(56, 189, 248, 0.25), transparent 70%),
+    radial-gradient(35% 35% at 20% 80%, rgba(124, 58, 237, 0.2), transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.design-lab > .container {
+  position: relative;
+  z-index: 2;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #eff6ff;
+  color: var(--primary, #2563eb);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.lab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.lab-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lab-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.lab-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.lab-icon {
+  font-size: 1.4rem;
+  color: var(--primary, #2563eb);
+}
+
+.lab-card-header h3 {
+  font-size: 1.3rem;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.lab-card-desc {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+/* Theme selector */
+.theme-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.theme-chip {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.theme-chip .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.theme-chip:hover {
+  border-color: var(--chip-color);
+  color: var(--chip-color);
+}
+
+.theme-chip.active {
+  background: #f0f9ff;
+  border-color: var(--chip-color);
+  color: var(--chip-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Color Tokens */
+.color-tokens-list h4, .lab-subgroup h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.token-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #f1f5f9;
+  margin-bottom: 10px;
+}
+
+.token-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.token-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.token-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.token-var {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-family: monospace;
+}
+
+.copy-btn {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.copy-btn .copied {
+  color: #10b981;
+}
+
+/* Subgroups */
+.lab-subgroup {
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.lab-subgroup:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-primary-demo {
+  background: var(--primary, #2563eb);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  min-width: 140px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-outline-demo {
+  background: transparent;
+  border: 2px solid var(--primary, #2563eb);
+  color: var(--primary, #2563eb);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-demo:hover {
+  background: var(--primary, #2563eb);
+  color: white;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Toggle Switch */
+.toggle-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.switch-track {
+  width: 50px;
+  height: 26px;
+  border-radius: 20px;
+  padding: 3px;
+  transition: background 0.3s ease;
+}
+
+.switch-track.on {
+  background: var(--primary, #2563eb);
+}
+
+.switch-track.off {
+  background: #cbd5e1;
+}
+
+.switch-thumb {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.switch-track.on .switch-thumb {
+  transform: translateX(24px);
+}
+
+.toggle-label {
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+/* Typography Slider */
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.slider-wrapper input[type="range"] {
+  flex: 1;
+  accent-color: var(--primary, #2563eb);
+}
+
+.slider-wrapper span {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #2563eb;
+  background: #eff6ff;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.typography-preview {
+  color: #0f172a;
+  line-height: 1.5;
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #f1f5f9;
+  transition: font-size 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .lab-grid {
+    grid-template-columns: 1fr;
+  }
+}
