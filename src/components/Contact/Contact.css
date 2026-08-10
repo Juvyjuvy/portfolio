@@ -69,6 +69,7 @@
   font-size: 2rem;
   color: var(--primary);
   transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+  flex-shrink: 0;
 }
 
 .contact-card:hover svg {
@@ -85,6 +86,7 @@
   color: var(--gray);
   font-size: 0.95rem;
   transition: color 0.2s ease;
+  word-break: break-word;
 }
 
 .contact-card a:hover {
@@ -95,6 +97,7 @@
   display: flex;
   gap: 15px;
   margin-top: 10px;
+  flex-wrap: wrap;
 }
 
 .contact-social a {
@@ -210,6 +213,7 @@
   font-size: 1rem;
   box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
   transition: all 0.3s ease;
+  width: 100%;
 }
 
 .btn-send:hover:not(:disabled) {
@@ -234,11 +238,21 @@
 @media(max-width:992px){
   .contact-container {
     grid-template-columns:1fr;
+    gap: 35px;
   }
 }
 
 @media(max-width:768px){
   .contact-form {
     padding: 24px;
+  }
+}
+
+@media(max-width:480px){
+  .contact-form {
+    padding: 18px 16px;
+  }
+  .contact-card {
+    padding: 16px;
   }
 }
