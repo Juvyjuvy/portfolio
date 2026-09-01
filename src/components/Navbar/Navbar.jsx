@@ -40,6 +40,9 @@ function Navbar() {
           <span className="logo-tag">UI/UX</span>
         </a>
 
+        {/* Backdrop for mobile menu overlay */}
+        {menuOpen && <div className="nav-backdrop" onClick={closeMenu}></div>}
+
         {/* Navigation Menu */}
         <nav className={menuOpen ? "nav-menu active" : "nav-menu"}>
           <a href="#home" onClick={closeMenu}>
@@ -106,9 +109,13 @@ function Navbar() {
             {darkMode ? <FaSun className="sun-icon" /> : <FaMoon className="moon-icon" />}
           </button>
           
-          <div className="menu-icon" onClick={toggleMenu}>
+          <button 
+            className="menu-icon" 
+            onClick={toggleMenu}
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          >
             {menuOpen ? <FaTimes /> : <FaBars />}
-          </div>
+          </button>
         </div>
 
       </div>
