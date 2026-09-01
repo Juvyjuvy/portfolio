@@ -2,6 +2,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 /* ===========================
+   HIDE SCROLLBAR GLOBALLY
+=========================== */
+
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+html, body, * {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+/* ===========================
    CSS VARIABLES
 =========================== */
 
@@ -401,27 +416,6 @@ section{
 
 .card:hover{
     transform:translateY(-8px);
-}
-
-/* ===========================
-   SCROLLBAR
-=========================== */
-
-::-webkit-scrollbar{
-    width:10px;
-}
-
-::-webkit-scrollbar-track{
-    background:#edf2f7;
-}
-
-::-webkit-scrollbar-thumb{
-    background:var(--primary);
-    border-radius:50px;
-}
-
-::-webkit-scrollbar-thumb:hover{
-    background:#1d4ed8;
 }
 
 /* ===========================
