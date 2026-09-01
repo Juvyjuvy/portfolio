@@ -62,13 +62,15 @@ body:not(.dark-mode) .option-btn.active {
 ============================================================ */
 
 body.dark-mode {
+  background-color: #0b0f19 !important;
+  color: #f8fafc !important;
   --background: #0b0f19;
   --secondary: #ffffff;
   --text: #f8fafc;
   --gray: #e2e8f0;
   --border: #334155;
   --white: #1e293b;
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 section,
@@ -215,6 +217,7 @@ body.dark-mode .tab-btn.active,
 body.dark-mode .option-btn.active {
   background: #2563eb !important;
   color: #ffffff !important;
+  border-color: #2563eb !important;
 }
 
 /* Modal Specific Dark Mode Fixes */
