@@ -40,28 +40,10 @@ function Navbar() {
           <span className="logo-tag">UI/UX</span>
         </a>
 
-        {/* Inline Desktop Menu Links (Visible on Desktop) */}
-        <nav className="desktop-inline-menu">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#frontend-lab" className="nav-highlight">
-            <FaLaptopCode /> Live Demo
-          </a>
-          <a href="#projects">Projects</a>
-          <a href="#ux-lab">
-            <FaPalette /> UX Lab
-          </a>
-          <a href="#quiz-game" className="game-nav-btn">
-            <FaGamepad /> Quiz Game
-          </a>
-          <a href="#contact">Contact</a>
-        </nav>
-
         {/* Backdrop for overlay drawer */}
         {menuOpen && <div className="nav-backdrop" onClick={closeMenu}></div>}
 
-        {/* Full Slide-out Drawer (Desktop & Mobile Burger Navigation) */}
+        {/* Full Slide-out Drawer (Burger Navigation for Desktop & Mobile) */}
         <nav className={menuOpen ? "nav-menu active" : "nav-menu"}>
           <div className="drawer-header">
             <a href="#home" className="logo" onClick={closeMenu}>

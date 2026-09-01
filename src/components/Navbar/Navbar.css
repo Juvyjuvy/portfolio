@@ -75,42 +75,8 @@
 }
 
 /* ===========================
-   DESKTOP INLINE MENU
+   NAV HIGHLIGHTS & BUTTONS
 =========================== */
-
-.desktop-inline-menu {
-    display: flex;
-    align-items: center;
-    gap: 22px;
-}
-
-.desktop-inline-menu a {
-    font-size: 0.92rem;
-    font-weight: 500;
-    color: var(--text);
-    transition: color .3s ease, transform .25s cubic-bezier(.34,1.56,.64,1);
-    position: relative;
-}
-
-.desktop-inline-menu a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0%;
-    height: 2px;
-    background: linear-gradient(90deg, var(--primary), #38bdf8);
-    transition: width .35s cubic-bezier(.34,1.56,.64,1);
-}
-
-.desktop-inline-menu a:hover {
-    color: var(--primary);
-    transform: translateY(-2px);
-}
-
-.desktop-inline-menu a:hover::after {
-    width: 100%;
-}
 
 .game-nav-btn {
     display: inline-flex;
@@ -138,7 +104,7 @@
     gap: 12px;
 }
 
-/* Hamburger / Burger Button (Visible on ALL devices) */
+/* Hamburger / Burger Button (Always Visible) */
 .menu-icon {
     display: flex;
     width: 44px;
@@ -365,14 +331,6 @@ body.dark-mode .logo-tag {
     border-color: rgba(56, 189, 248, 0.4) !important;
 }
 
-body.dark-mode .desktop-inline-menu a {
-    color: #f8fafc !important;
-}
-
-body.dark-mode .desktop-inline-menu a:hover {
-    color: #38bdf8 !important;
-}
-
 body.dark-mode .theme-toggle-btn {
     background: #1e293b !important;
     border-color: #334155 !important;
@@ -423,14 +381,6 @@ body.dark-mode .drawer-social a {
    RESPONSIVE BREAKPOINTS
 =========================== */
 
-@media screen and (max-width: 1100px) {
-    .desktop-inline-menu,
-    .desktop-theme-btn,
-    .desktop-resume-btn {
-        display: none;
-    }
-}
-
 @media screen and (max-width: 576px) {
     .logo {
         font-size: 1.3rem;
@@ -445,5 +395,8 @@ body.dark-mode .drawer-social a {
     .nav-menu {
         width: 100%;
         max-width: 100%;
+    }
+    .desktop-theme-btn, .desktop-resume-btn {
+        display: none;
     }
 }
