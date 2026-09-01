@@ -44,7 +44,7 @@ function Hero() {
           {/* Quick Stats Grid */}
           <div className="hero-stats">
             <div className="stat-item">
-              <span className="stat-number">256</span>
+              <span className="stat-number">251</span>
               <span className="stat-label">TOPCIT Score</span>
             </div>
             <div className="stat-item">

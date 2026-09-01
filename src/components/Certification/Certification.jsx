@@ -31,7 +31,7 @@ function Certification() {
 
               <h3>TOPCIT Level 2 Certification</h3>
 
-              <h4>Score: 256</h4>
+              <h4>Score: 251</h4>
 
               <p>
                 Successfully achieved <strong>Level 2</strong> in the

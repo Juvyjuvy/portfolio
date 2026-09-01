@@ -38,7 +38,7 @@ function Skills() {
       { name: "VS Code", desc: "Customized extension ecosystem for efficient coding" },
     ],
     cert: [
-      { name: "TOPCIT Level 2 Certification", desc: "Score 256 in Test of Practical Competency in ICT" },
+      { name: "TOPCIT Level 2 Certification", desc: "Score 251 in Test of Practical Competency in ICT" },
       { name: "Graphic Design & Branding", desc: "Posters, banners, tarpaulins, and social media branding" },
       { name: "Technical Support", desc: "Computer maintenance, PC cleaning, and software setup" },
       { name: "Lead Generation", desc: "Client research, market analysis, and outreach strategies" },

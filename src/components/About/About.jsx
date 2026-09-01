@@ -42,7 +42,7 @@ function About() {
             </p>
 
             <p>
-              I also hold a <strong>TOPCIT Level 2 Certification</strong> (Score: <strong>256</strong>), demonstrating verified competency in software engineering, database management, and problem-solving.
+              I also hold a <strong>TOPCIT Level 2 Certification</strong> (Score: <strong>251</strong>), demonstrating verified competency in software engineering, database management, and problem-solving.
             </p>
 
             {/* Quick Info Grid */}

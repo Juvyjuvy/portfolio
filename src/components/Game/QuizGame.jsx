@@ -25,12 +25,12 @@ function QuizGame() {
       question: "What score did Juvy achieve on the official TOPCIT Level 2 IT Competency exam?",
       options: [
         "120 Points",
-        "256 Points (TOPCIT Level 2 Certified)",
+        "251 Points (TOPCIT Level 2 Certified)",
         "50 Points",
         "300 Points"
       ],
       correct: 1,
-      explanation: "Juvy earned a TOPCIT score of 256, proving practical competencies in software engineering and IT systems."
+      explanation: "Juvy earned a TOPCIT score of 251, proving practical competencies in software engineering and IT systems."
     },
     {
       question: "Which web system did Juvy engineer as a capstone project to digitize approvals?",
