@@ -187,23 +187,23 @@ export default function CustomApp() {
                   {/* Dynamic UI Content Rendering */}
                   {appType === "dashboard" && (
                     <div className="ui-dashboard">
-                      <div className="ui-nav" style={{ borderColor: currentTheme.primary }}>
+                      <div className="ui-nav" style={{ borderColor: isDark ? "rgba(56, 189, 248, 0.4)" : currentTheme.primary }}>
                         <strong>⚡ Analytics Pro Dashboard</strong>
-                        <span className="status-pill" style={{ backgroundColor: currentTheme.primary }}>Active</span>
+                        <span className="status-pill" style={{ backgroundColor: currentTheme.primary, color: "#ffffff" }}>Active</span>
                       </div>
                       <div className="ui-stats-row">
-                        <div className="ui-card" style={{ backgroundColor: isDark ? "#1e293b" : currentTheme.cardBg, color: isDark ? "#ffffff" : currentTheme.text }}>
+                        <div className="ui-card" style={{ backgroundColor: isDark ? "#1e293b" : currentTheme.cardBg, color: isDark ? "#ffffff" : currentTheme.text, border: isDark ? "1px solid rgba(51, 65, 85, 0.7)" : "1px solid #e2e8f0" }}>
                           <span>Total Visitors</span>
                           <h3>24,520</h3>
-                          <small style={{ color: "#10b981" }}>+14% this month</small>
+                          <small style={{ color: "#10b981", fontWeight: "600" }}>+14% this month</small>
                         </div>
-                        <div className="ui-card" style={{ backgroundColor: isDark ? "#1e293b" : currentTheme.cardBg, color: isDark ? "#ffffff" : currentTheme.text }}>
+                        <div className="ui-card" style={{ backgroundColor: isDark ? "#1e293b" : currentTheme.cardBg, color: isDark ? "#ffffff" : currentTheme.text, border: isDark ? "1px solid rgba(51, 65, 85, 0.7)" : "1px solid #e2e8f0" }}>
                           <span>Conversion Rate</span>
                           <h3>4.8%</h3>
-                          <small style={{ color: currentTheme.primary }}>Optimal UX</small>
+                          <small style={{ color: isDark ? "#38bdf8" : currentTheme.primary, fontWeight: "600" }}>Optimal UX</small>
                         </div>
                       </div>
-                      <div className="ui-chart-box" style={{ backgroundColor: isDark ? "#1e293b" : currentTheme.cardBg, color: isDark ? "#ffffff" : currentTheme.text }}>
+                      <div className="ui-chart-box" style={{ backgroundColor: isDark ? "#1e293b" : currentTheme.cardBg, color: isDark ? "#ffffff" : currentTheme.text, border: isDark ? "1px solid rgba(51, 65, 85, 0.7)" : "1px solid #e2e8f0" }}>
                         <span>Realtime Traffic Volume</span>
                         <div className="bar-chart">
                           <div className="bar" style={{ height: "40%", backgroundColor: currentTheme.accent }}></div>
@@ -218,19 +218,19 @@ export default function CustomApp() {
 
                   {appType === "ecommerce" && (
                     <div className="ui-ecommerce">
-                      <div className="ui-nav">
+                      <div className="ui-nav" style={{ borderColor: isDark ? "rgba(56, 189, 248, 0.4)" : currentTheme.primary }}>
                         <strong>🛍️ Modern Storefront</strong>
-                        <span className="cart-badge" style={{ backgroundColor: currentTheme.primary }}>3 Items</span>
+                        <span className="cart-badge" style={{ backgroundColor: currentTheme.primary, color: "#ffffff" }}>3 Items</span>
                       </div>
                       <div className="product-grid">
                         {[1, 2].map((item) => (
-                          <div key={item} className="product-card" style={{ backgroundColor: isDark ? "#1e293b" : currentTheme.cardBg, color: isDark ? "#ffffff" : currentTheme.text }}>
+                          <div key={item} className="product-card" style={{ backgroundColor: isDark ? "#1e293b" : currentTheme.cardBg, color: isDark ? "#ffffff" : currentTheme.text, border: isDark ? "1px solid rgba(51, 65, 85, 0.7)" : "1px solid #e2e8f0" }}>
                             <div className="product-img-placeholder" style={{ backgroundColor: currentTheme.accent }}>
                               Product #{item}
                             </div>
                             <h4>Minimalist Smartwatch</h4>
-                            <span className="price" style={{ color: currentTheme.primary }}>$199.00</span>
-                            <button className="add-btn" style={{ backgroundColor: currentTheme.primary }}>Add to Cart</button>
+                            <span className="price" style={{ color: isDark ? "#38bdf8" : currentTheme.primary, fontWeight: "700" }}>$199.00</span>
+                            <button className="add-btn" style={{ backgroundColor: currentTheme.primary, color: "#ffffff" }}>Add to Cart</button>
                           </div>
                         ))}
                       </div>
@@ -246,7 +246,7 @@ export default function CustomApp() {
                         </div>
                         <div className="mobile-content">
                           <div className="avatar-chip">Welcome Back, Juvy! 👋</div>
-                          <div className="widget-card" style={{ backgroundColor: isDark ? "#0f172a" : currentTheme.bg, color: isDark ? "#ffffff" : currentTheme.text }}>
+                          <div className="widget-card" style={{ backgroundColor: isDark ? "#0f172a" : currentTheme.bg, color: isDark ? "#ffffff" : currentTheme.text, border: isDark ? "1px solid rgba(51, 65, 85, 0.7)" : "1px solid #e2e8f0" }}>
                             <span>Today's Goal</span>
                             <h4>Seamless Frontend React Code</h4>
                           </div>

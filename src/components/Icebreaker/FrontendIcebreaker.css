@@ -261,11 +261,18 @@
   overflow-y: auto;
 }
 
+.ui-dashboard, .ui-ecommerce {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .ui-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 20px;
   border-bottom: 2px solid;
 }
 
@@ -281,6 +288,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+  margin-bottom: 20px;
 }
 
 .ui-card {
