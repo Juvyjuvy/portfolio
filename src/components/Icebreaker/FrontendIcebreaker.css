@@ -383,7 +383,7 @@
   opacity: 0.9;
 }
 
-/* Mobile UI */
+/* Mobile UI Real Mockup */
 .ui-mobile-wrapper {
   display: flex;
   justify-content: center;
@@ -391,46 +391,31 @@
   width: 100%;
 }
 
-.mobile-frame {
-  width: 240px;
-  border: 4px solid;
-  border-radius: 28px;
+.real-phone-mockup {
+  width: 280px;
+  border: 5px solid;
+  border-radius: 36px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  background: #0f172a;
+  transition: transform 0.3s ease;
 }
 
-.mobile-header {
-  padding: 12px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.75rem;
+.real-phone-mockup:hover {
+  transform: translateY(-5px);
 }
 
-.mobile-content {
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.phone-screen-container {
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  position: relative;
 }
 
-.avatar-chip {
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.widget-card {
-  padding: 12px;
-  border-radius: 10px;
-  font-size: 0.8rem;
-}
-
-.mobile-action-btn {
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  font-weight: 700;
-  font-size: 0.8rem;
-  cursor: pointer;
+.real-mobile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Code View */
@@ -537,6 +522,12 @@ body.dark-mode .icebreaker-cta p {
   }
   .product-img-wrapper {
     height: 180px;
+  }
+  .real-phone-mockup {
+    width: 240px;
+  }
+  .phone-screen-container {
+    height: 400px;
   }
   .bar-chart {
     gap: 8px;

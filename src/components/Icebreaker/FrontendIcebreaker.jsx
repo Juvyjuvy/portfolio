@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaCode, FaLaptopCode, FaCheck, FaCopy, FaPaperPlane, FaMobileAlt, FaShoppingBag, FaChartLine } from "react-icons/fa";
 import productSmartwatch from "../../assets/images/Products/product-smartwatch.jpg";
 import productHeadphones from "../../assets/images/Products/product-headphones.jpg";
+import mobileUiReal from "../../assets/images/Products/mobile-ui-real.jpg";
 import "./FrontendIcebreaker.css";
 
 function FrontendIcebreaker() {
@@ -246,20 +247,9 @@ export default function CustomApp() {
 
                   {appType === "mobile" && (
                     <div className="ui-mobile-wrapper">
-                      <div className="mobile-frame" style={{ borderColor: currentTheme.primary, backgroundColor: isDark ? "#1e293b" : "#ffffff", color: isDark ? "#ffffff" : "#0f172a" }}>
-                        <div className="mobile-header" style={{ backgroundColor: currentTheme.primary, color: "white" }}>
-                          <span>9:41 AM</span>
-                          <strong>Mobile UX Flow</strong>
-                        </div>
-                        <div className="mobile-content">
-                          <div className="avatar-chip">Welcome Back, Juvy! 👋</div>
-                          <div className="widget-card" style={{ backgroundColor: isDark ? "#0f172a" : currentTheme.bg, color: isDark ? "#ffffff" : currentTheme.text, border: isDark ? "1px solid rgba(51, 65, 85, 0.7)" : "1px solid #e2e8f0" }}>
-                            <span>Today's Goal</span>
-                            <h4>Seamless Frontend React Code</h4>
-                          </div>
-                          <button className="mobile-action-btn" style={{ backgroundColor: currentTheme.primary, color: "white" }}>
-                            Explore Features
-                          </button>
+                      <div className="real-phone-mockup" style={{ borderColor: currentTheme.primary }}>
+                        <div className="phone-screen-container">
+                          <img src={mobileUiReal} alt="Real Mobile App UI Flow" className="real-mobile-img" />
                         </div>
                       </div>
                     </div>
