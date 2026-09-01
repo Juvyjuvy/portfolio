@@ -248,8 +248,13 @@ export default function CustomApp() {
                   {appType === "mobile" && (
                     <div className="ui-mobile-wrapper">
                       <div className="real-phone-mockup" style={{ borderColor: currentTheme.primary }}>
+                        <div className="phone-notch-bar">
+                          <span>9:41</span>
+                          <div className="camera-notch"></div>
+                          <span>100% 🔋</span>
+                        </div>
                         <div className="phone-screen-container">
-                          <img src={mobileUiReal} alt="Real Mobile App UI Flow" className="real-mobile-img" />
+                          <img src={mobileUiReal} alt="Real Mobile App UI Video Demo" className="real-mobile-img" />
                         </div>
                       </div>
                     </div>
