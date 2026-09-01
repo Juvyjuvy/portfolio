@@ -331,15 +331,15 @@
 .product-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 20px;
 }
 
 .product-card {
-  padding: 16px;
-  border-radius: 14px;
+  padding: 18px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -348,8 +348,8 @@
 }
 
 .product-img-wrapper {
-  height: 130px;
-  border-radius: 10px;
+  height: 220px;
+  border-radius: 12px;
   overflow: hidden;
   background: #0f172a;
   display: flex;
@@ -371,10 +371,10 @@
 .add-btn {
   color: white;
   border: none;
-  padding: 10px;
-  border-radius: 8px;
+  padding: 12px;
+  border-radius: 10px;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
@@ -534,6 +534,9 @@ body.dark-mode .icebreaker-cta p {
   }
   .dynamic-ui-container {
     padding: 16px;
+  }
+  .product-img-wrapper {
+    height: 180px;
   }
   .bar-chart {
     gap: 8px;
