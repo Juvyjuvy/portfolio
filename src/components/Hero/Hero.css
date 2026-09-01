@@ -304,6 +304,24 @@
 }
 
 /* EXPLICIT DARK MODE FOR HERO */
+body.dark-mode .hero-badge {
+  background: rgba(37, 99, 235, 0.25) !important;
+  color: #38bdf8 !important;
+  border-color: rgba(56, 189, 248, 0.4) !important;
+}
+
+body.dark-mode .hero-title {
+  color: #ffffff !important;
+}
+
+body.dark-mode .hero-subtitle {
+  color: #38bdf8 !important;
+}
+
+body.dark-mode .hero-description {
+  color: #e2e8f0 !important;
+}
+
 body.dark-mode .hero-stats,
 body.dark-mode .floating-badge {
   background: rgba(15, 23, 42, 0.9) !important;
