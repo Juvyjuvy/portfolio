@@ -95,13 +95,14 @@
 }
 
 /* ===========================
-   NAV CONTROLS & BURGER BUTTON
+   NAV CONTROLS & BURGER BUTTON (FLUSH TO FAR RIGHT)
 =========================== */
 
 .nav-controls {
     display: flex;
     align-items: center;
     gap: 12px;
+    margin-left: auto;
 }
 
 /* Hamburger / Burger Button (Always Visible) */
