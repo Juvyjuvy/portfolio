@@ -1,5 +1,5 @@
 /* ===========================
-   NAVBAR
+   NAVBAR & BURGER MENU DRAWER
 =========================== */
 
 .navbar {
@@ -7,9 +7,10 @@
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     z-index: 999;
     animation: navDrop .6s cubic-bezier(.22,1,.36,1) both;
 }
@@ -74,24 +75,24 @@
 }
 
 /* ===========================
-   NAV MENU
+   DESKTOP INLINE MENU
 =========================== */
 
-.nav-menu {
+.desktop-inline-menu {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 22px;
 }
 
-.nav-menu a {
-    font-size: 0.95rem;
+.desktop-inline-menu a {
+    font-size: 0.92rem;
     font-weight: 500;
     color: var(--text);
     transition: color .3s ease, transform .25s cubic-bezier(.34,1.56,.64,1);
     position: relative;
 }
 
-.nav-menu a::after {
+.desktop-inline-menu a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -102,12 +103,12 @@
     transition: width .35s cubic-bezier(.34,1.56,.64,1);
 }
 
-.nav-menu a:hover {
+.desktop-inline-menu a:hover {
     color: var(--primary);
     transform: translateY(-2px);
 }
 
-.nav-menu a:hover::after {
+.desktop-inline-menu a:hover::after {
     width: 100%;
 }
 
@@ -125,6 +126,40 @@
     gap: 6px;
     color: var(--primary) !important;
     font-weight: 600 !important;
+}
+
+/* ===========================
+   NAV CONTROLS & BURGER BUTTON
+=========================== */
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Hamburger / Burger Button (Visible on ALL devices) */
+.menu-icon {
+    display: flex;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #eff6ff;
+    border: 1px solid #cbd5e1;
+    color: var(--primary);
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.08);
+}
+
+.menu-icon:hover {
+    background: var(--primary);
+    color: white;
+    transform: scale(1.06);
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
 }
 
 /* Theme Toggle Button */
@@ -152,78 +187,172 @@
 .sun-icon { color: #f59e0b; }
 .moon-icon { color: #3b82f6; }
 
-/* ===========================
-   RESUME BUTTON
-=========================== */
-
 .resume-btn {
-    padding: 10px 22px;
+    padding: 10px 20px;
     background: var(--primary);
     color: white !important;
-    border-radius: 8px;
+    border-radius: 10px;
+    font-weight: 600;
     transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
 .resume-btn:hover {
     background: #1d4ed8;
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: 0 10px 20px -6px rgba(37,99,235,.5);
 }
 
-.resume-btn::after {
-    display: none;
-}
-
 /* ===========================
-   MOBILE CONTROLS & HAMBURGER
+   SLIDE-OUT BURGER DRAWER (DESKTOP & MOBILE)
 =========================== */
-
-.mobile-controls {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.menu-icon {
-    display: none;
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    background: #eff6ff;
-    border: 1px solid #cbd5e1;
-    color: var(--primary);
-    justify-content: center;
-    align-items: center;
-    font-size: 1.3rem;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.menu-icon:hover {
-    background: var(--primary);
-    color: white;
-    transform: scale(1.05);
-}
-
-.mobile-theme-btn {
-    display: none;
-}
 
 .nav-backdrop {
     position: fixed;
     inset: 0;
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(4px);
-    z-index: 990;
-    animation: fadeIn 0.25s ease-out;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
 }
 
-/* EXPLICIT DARK MODE FOR NAVBAR */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 380px;
+    max-width: 88vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    padding: 30px 28px;
+    z-index: 1001;
+    transition: right 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    border-left: 1px solid rgba(226, 232, 240, 0.8);
+    overflow-y: auto;
+}
+
+.nav-menu.active {
+    right: 0;
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 24px;
+}
+
+.drawer-close-btn {
+    background: #f1f5f9;
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.drawer-close-btn:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+    transform: rotate(90deg);
+}
+
+.drawer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.drawer-links a {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #0f172a;
+    padding: 8px 14px;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+}
+
+.drawer-links a:hover {
+    background: #eff6ff;
+    color: var(--primary);
+    transform: translateX(6px);
+}
+
+.drawer-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.drawer-theme-btn {
+    width: 100%;
+    height: 48px;
+    border-radius: 12px;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.drawer-resume-btn {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    font-size: 0.95rem;
+}
+
+.drawer-social {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.drawer-social a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    color: #475569;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    transition: all 0.25s ease;
+}
+
+.drawer-social a:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* ===========================
+   EXPLICIT DARK MODE FOR NAVBAR
+=========================== */
+
 body.dark-mode .navbar {
     background: rgba(11, 15, 25, 0.95) !important;
     border-bottom: 1px solid rgba(51, 65, 85, 0.8) !important;
-    backdrop-filter: blur(16px);
 }
 
 body.dark-mode .logo {
@@ -236,11 +365,11 @@ body.dark-mode .logo-tag {
     border-color: rgba(56, 189, 248, 0.4) !important;
 }
 
-body.dark-mode .nav-menu a {
+body.dark-mode .desktop-inline-menu a {
     color: #f8fafc !important;
 }
 
-body.dark-mode .nav-menu a:hover {
+body.dark-mode .desktop-inline-menu a:hover {
     color: #38bdf8 !important;
 }
 
@@ -261,48 +390,45 @@ body.dark-mode .menu-icon:hover {
     color: #ffffff !important;
 }
 
-@media screen and (max-width: 992px) {
+body.dark-mode .nav-menu {
+    background: #0f172a !important;
+    border-left-color: #334155 !important;
+}
 
-    .menu-icon, .mobile-theme-btn {
-        display: flex;
-    }
+body.dark-mode .drawer-header,
+body.dark-mode .drawer-actions {
+    border-color: #334155 !important;
+}
 
-    .nav-menu .theme-toggle-btn {
+body.dark-mode .drawer-close-btn {
+    background: #1e293b !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .drawer-links a {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .drawer-links a:hover {
+    background: rgba(30, 41, 59, 0.9) !important;
+    color: #38bdf8 !important;
+}
+
+body.dark-mode .drawer-social a {
+    background: #1e293b !important;
+    color: #38bdf8 !important;
+}
+
+/* ===========================
+   RESPONSIVE BREAKPOINTS
+=========================== */
+
+@media screen and (max-width: 1100px) {
+    .desktop-inline-menu,
+    .desktop-theme-btn,
+    .desktop-resume-btn {
         display: none;
     }
-
-    .nav-menu {
-        position: fixed;
-        top: 80px;
-        left: -100%;
-        width: 100%;
-        max-width: 100%;
-        background: #ffffff;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        padding: 30px 20px 40px;
-        box-shadow: 0 15px 30px rgba(0,0,0,.15);
-        transition: left .4s cubic-bezier(.22,1,.36,1);
-        z-index: 998;
-        border-bottom: 1px solid #e2e8f0;
-    }
-
-    body.dark-mode .nav-menu {
-        background: #0b0f19 !important;
-        border-bottom-color: #334155 !important;
-    }
-
-    .nav-menu.active {
-        left: 0;
-    }
-
-    .resume-btn {
-        width: 100%;
-        max-width: 260px;
-        text-align: center;
-    }
-
 }
 
 @media screen and (max-width: 576px) {
@@ -317,6 +443,7 @@ body.dark-mode .menu-icon:hover {
         height: 70px;
     }
     .nav-menu {
-        top: 70px;
+        width: 100%;
+        max-width: 100%;
     }
 }
