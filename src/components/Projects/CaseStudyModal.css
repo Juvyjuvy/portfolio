@@ -3,8 +3,9 @@
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(8px);
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +24,7 @@
   max-width: 900px;
   max-height: 90vh;
   border-radius: 24px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -125,8 +126,8 @@
 }
 
 .tab-btn {
-  background: none;
-  border: none;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   padding: 8px 16px;
   border-radius: 10px;
   font-weight: 600;
@@ -140,13 +141,15 @@
 }
 
 .tab-btn:hover {
-  background: #f8fafc;
+  background: #eff6ff;
   color: #2563eb;
+  border-color: #cbd5e1;
 }
 
 .tab-btn.active {
-  background: #2563eb;
+  background: #2563eb !important;
   color: #ffffff !important;
+  border-color: #2563eb !important;
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
 }
 
@@ -262,6 +265,11 @@
   border: 1px solid #e2e8f0;
   padding: 14px;
   border-radius: 12px;
+}
+
+.persona-card p {
+  color: #334155;
+  font-size: 0.92rem;
 }
 
 .persona-avatar {
@@ -399,7 +407,10 @@
   background: #1e293b !important;
 }
 
-/* EXPLICIT DARK MODE FOR CASE STUDY MODAL */
+/* ===================================================
+   EXPLICIT DARK MODE OVERRIDES FOR CASE STUDY MODAL
+=================================================== */
+
 body.dark-mode .modal-container {
   background: #0f172a !important;
   border-color: #334155 !important;
@@ -413,6 +424,21 @@ body.dark-mode .modal-tabs {
   border-color: #334155 !important;
 }
 
+body.dark-mode .modal-category {
+  background: rgba(37, 99, 235, 0.25) !important;
+  color: #38bdf8 !important;
+}
+
+body.dark-mode .modal-ux-badge {
+  background: rgba(124, 58, 237, 0.25) !important;
+  color: #c084fc !important;
+}
+
+body.dark-mode .close-btn {
+  background: #334155 !important;
+  color: #ffffff !important;
+}
+
 body.dark-mode .modal-title-section h2,
 body.dark-mode .case-box h3,
 body.dark-mode .impact-section h3,
@@ -424,29 +450,37 @@ body.dark-mode .color-name {
 body.dark-mode .modal-title-section p,
 body.dark-mode .case-box p,
 body.dark-mode .impact-section li,
+body.dark-mode .persona-card p,
 body.dark-mode .color-hex {
   color: #e2e8f0 !important;
 }
 
 body.dark-mode .tab-btn {
+  background: #1e293b !important;
+  border-color: #334155 !important;
   color: #e2e8f0 !important;
+}
+
+body.dark-mode .tab-btn:hover {
+  background: rgba(30, 41, 59, 0.9) !important;
+  color: #38bdf8 !important;
 }
 
 body.dark-mode .tab-btn.active {
   background: #2563eb !important;
   color: #ffffff !important;
+  border-color: #2563eb !important;
 }
 
-body.dark-mode .close-btn {
-  background: #334155 !important;
-  color: #ffffff !important;
+body.dark-mode .modal-image-wrapper {
+  background: #1e293b !important;
+  border-color: #334155 !important;
 }
 
 body.dark-mode .case-box,
 body.dark-mode .persona-card,
 body.dark-mode .wireframe-pill,
-body.dark-mode .color-swatch-box,
-body.dark-mode .typography-spec {
+body.dark-mode .color-swatch-box {
   background: #1e293b !important;
   border-color: #334155 !important;
   color: #ffffff !important;
@@ -457,9 +491,25 @@ body.dark-mode .case-box.highlight {
   border-color: rgba(56, 189, 248, 0.4) !important;
 }
 
+body.dark-mode .typography-spec {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+  color: #38bdf8 !important;
+}
+
 body.dark-mode .tech-pills span {
   background: rgba(37, 99, 235, 0.25) !important;
   color: #38bdf8 !important;
+}
+
+body.dark-mode .btn-github {
+  background: #1e293b !important;
+  border: 1px solid #475569 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .btn-github:hover {
+  background: #334155 !important;
 }
 
 @media (max-width: 768px) {
