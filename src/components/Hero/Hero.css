@@ -220,10 +220,10 @@
   justify-content: center;
   align-items: center;
   max-width: 100%;
-  padding-top: 40px;
+  padding-top: 100px;
 }
 
-/* Lanyard & Realistic Student ID Card Swing Effect */
+/* Extended Lanyard & Swinging Card Pass */
 .lanyard-wrapper {
   display: flex;
   flex-direction: column;
@@ -233,6 +233,7 @@
   transform-origin: top center;
   animation: lanyardSwing 5s ease-in-out infinite;
   cursor: pointer;
+  margin-top: -60px;
 }
 
 .lanyard-wrapper:hover {
@@ -251,46 +252,78 @@
   100% { transform: rotate(-6.5deg); }
 }
 
-/* Lanyard Fabric Strap */
+/* Woven Lanyard Fabric Strap Extended Up to Navbar */
 .lanyard-strap {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   width: 100%;
-  height: 55px;
-  margin-bottom: -12px;
+  height: 120px;
+  margin-bottom: -10px;
   z-index: 5;
 }
 
 .lanyard-strap .strap-line {
   position: absolute;
-  top: -45px;
-  width: 18px;
-  height: 90px;
-  background: linear-gradient(135deg, #1e3a8a, #2563eb, #38bdf8);
+  top: -180px;
+  width: 22px;
+  height: 270px;
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #38bdf8 100%);
   border-radius: 4px;
-  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.35);
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
+  border-right: 2px solid rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .lanyard-strap .strap-line.left {
-  transform: rotate(-18deg);
-  left: calc(50% - 24px);
+  transform: rotate(-12deg);
+  left: calc(50% - 28px);
 }
 
 .lanyard-strap .strap-line.right {
-  transform: rotate(18deg);
-  right: calc(50% - 24px);
+  transform: rotate(12deg);
+  right: calc(50% - 28px);
+}
+
+/* Printed Text Along Fabric Lanyard Strap */
+.lanyard-strap .strap-text {
+  font-size: 0.52rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 1.5px;
+  writing-mode: vertical-rl;
+  text-transform: uppercase;
+  user-select: none;
+  padding: 10px 0;
+  display: block;
+}
+
+/* Metallic Swivel Hook & Clip */
+.lanyard-swivel-ring {
+  position: absolute;
+  bottom: 22px;
+  width: 22px;
+  height: 22px;
+  border: 4px solid #cbd5e1;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+  background: transparent;
 }
 
 .lanyard-metal-clip {
   position: absolute;
-  bottom: 12px;
+  bottom: 6px;
   width: 32px;
-  height: 20px;
-  background: linear-gradient(135deg, #e2e8f0, #94a3b8, #cbd5e1);
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  height: 22px;
+  background: linear-gradient(135deg, #ffffff, #cbd5e1, #94a3b8, #cbd5e1);
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
   z-index: 6;
   border: 1px solid #ffffff;
 }
@@ -527,7 +560,7 @@
 .badge-icon.cert { color: #eab308; }
 
 .badge-top-left {
-  top: 70px;
+  top: 110px;
   left: -20px;
 }
 
@@ -538,7 +571,7 @@
 }
 
 .badge-top-right {
-  top: 100px;
+  top: 140px;
   right: -10px;
   animation-delay: 0.8s;
 }
@@ -660,6 +693,11 @@ body.dark-mode .hero-social a {
   }
   .hero-image-container {
     flex-direction: column;
+    padding-top: 60px;
+  }
+  .lanyard-strap .strap-line {
+    top: -100px;
+    height: 190px;
   }
 }
 

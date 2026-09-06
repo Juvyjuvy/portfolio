@@ -89,14 +89,19 @@ function Hero() {
 
         </div>
 
-        {/* Right Image Frame with Realistic Student / Dev Lanyard ID Card */}
+        {/* Right Image Frame with Extended Lanyard Student ID Card */}
         <div className="hero-image-container">
 
-          {/* Lanyard & Swinging Real Student ID Pass */}
+          {/* Lanyard Strap Extended to Navbar & Swinging ID Pass */}
           <div className="lanyard-wrapper">
             <div className="lanyard-strap">
-              <div className="strap-line left"></div>
-              <div className="strap-line right"></div>
+              <div className="strap-line left">
+                <span className="strap-text">JUVY E. ABALLE JR. • UI/UX DESIGNER • REACT DEV</span>
+              </div>
+              <div className="strap-line right">
+                <span className="strap-text">JUVY E. ABALLE JR. • TOPCIT LEVEL 2 CERTIFIED</span>
+              </div>
+              <div className="lanyard-swivel-ring"></div>
               <div className="lanyard-metal-clip"></div>
             </div>
 
