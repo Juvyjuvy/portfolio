@@ -13,7 +13,9 @@ import {
   FaAward,
   FaPencilRuler,
   FaLayerGroup,
-  FaIdBadge
+  FaIdBadge,
+  FaGraduationCap,
+  FaCheckCircle
 } from "react-icons/fa";
 
 function Hero() {
@@ -87,24 +89,55 @@ function Hero() {
 
         </div>
 
-        {/* Right Image Frame with Swinging Lanyard Student Badge */}
+        {/* Right Image Frame with Realistic Student / Dev Lanyard ID Card */}
         <div className="hero-image-container">
 
-          {/* Lanyard & Swinging Photo Badge */}
+          {/* Lanyard & Swinging Real Student ID Pass */}
           <div className="lanyard-wrapper">
             <div className="lanyard-strap">
               <div className="strap-line left"></div>
               <div className="strap-line right"></div>
               <div className="lanyard-metal-clip"></div>
-              <div className="lanyard-badge-holder"></div>
             </div>
 
-            <div className="hero-frame">
-              <div className="id-card-slot"></div>
-              <img src={profile} alt="Juvy E. Aballe Jr." />
-              <div className="id-badge-tag">
-                <FaIdBadge /> STUDENT / DEV PASS
+            {/* Realistic Plastic Student ID Card */}
+            <div className="realistic-id-card">
+              {/* Card Punch Hole */}
+              <div className="id-card-punch-slot"></div>
+
+              {/* Card Header Banner */}
+              <div className="id-card-header">
+                <div className="id-card-logo">
+                  <FaGraduationCap /> <span>IT STUDENT & DEV PASS</span>
+                </div>
+                <span className="id-topcit-tag">TOPCIT 251</span>
               </div>
+
+              {/* Card Body */}
+              <div className="id-card-body">
+                <div className="id-photo-wrapper">
+                  <img src={profile} alt="Juvy E. Aballe Jr." />
+                </div>
+
+                <div className="id-card-details">
+                  <h3 className="id-card-name">JUVY E. ABALLE JR.</h3>
+                  <p className="id-card-role">UI/UX & React Developer</p>
+                  
+                  <div className="id-card-meta">
+                    <span className="id-no">ID: <strong>2024-IT-0251</strong></span>
+                    <span className="id-status"><FaCheckCircle /> VERIFIED</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card Barcode Footer */}
+              <div className="id-card-footer">
+                <div className="barcode-lines"></div>
+                <span className="barcode-text">*JUVY-ABALLE-UIUX-DEV*</span>
+              </div>
+
+              {/* Gloss Reflection Layer */}
+              <div className="id-card-gloss"></div>
             </div>
           </div>
 
