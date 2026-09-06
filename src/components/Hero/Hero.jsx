@@ -100,6 +100,7 @@ function Hero() {
             </div>
 
             <div className="hero-frame">
+              <div className="id-card-slot"></div>
               <img src={profile} alt="Juvy E. Aballe Jr." />
               <div className="id-badge-tag">
                 <FaIdBadge /> STUDENT / DEV PASS
