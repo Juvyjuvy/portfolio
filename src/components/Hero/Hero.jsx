@@ -12,7 +12,8 @@ import {
   FaLinkedin,
   FaAward,
   FaPencilRuler,
-  FaLayerGroup
+  FaLayerGroup,
+  FaIdBadge
 } from "react-icons/fa";
 
 function Hero() {
@@ -86,9 +87,26 @@ function Hero() {
 
         </div>
 
-        {/* Right Image Frame with Floating UI Badges */}
+        {/* Right Image Frame with Swinging Lanyard Student Badge */}
         <div className="hero-image-container">
-          
+
+          {/* Lanyard & Swinging Photo Badge */}
+          <div className="lanyard-wrapper">
+            <div className="lanyard-strap">
+              <div className="strap-line left"></div>
+              <div className="strap-line right"></div>
+              <div className="lanyard-metal-clip"></div>
+              <div className="lanyard-badge-holder"></div>
+            </div>
+
+            <div className="hero-frame">
+              <img src={profile} alt="Juvy E. Aballe Jr." />
+              <div className="id-badge-tag">
+                <FaIdBadge /> STUDENT / DEV PASS
+              </div>
+            </div>
+          </div>
+
           {/* Floating UI Badges */}
           <div className="floating-badge badge-top-left">
             <FaFigma className="badge-icon figma" />
@@ -112,10 +130,6 @@ function Hero() {
               <strong>TOPCIT Certified</strong>
               <span>Level 2 IT Competency</span>
             </div>
-          </div>
-
-          <div className="hero-frame">
-            <img src={profile} alt="Juvy E. Aballe Jr." />
           </div>
 
         </div>
